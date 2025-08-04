@@ -1,103 +1,97 @@
-import Image from "next/image";
+"use client"
+import React, { useState } from 'react'
+import logo from "./Image/alphabit.png"
+import Image from "next/image"
+import { Mail, Phone, MapPinHouse } from 'lucide-react';
 
-export default function Home() {
+const Page = () => {
+
+  const eventDate = new Date("2025-09-15T09:00:00").getTime();
+  const [month, setMonth] = useState()
+  const [days, setDays] = useState()
+  const [hours, setHours] = useState()
+  const [minutes, setMinutes] = useState()
+  const [seconds, setSeconds] = useState()
+
+  const timer = setInterval(() => {
+    const now = new Date().getTime();
+    let distance = eventDate - now;
+
+
+    // Calculate total seconds
+    const totalSeconds = Math.floor(distance / 1000);
+
+    setMonth(Math.floor(totalSeconds / (30 * 24 * 60 * 60))) // assuming 30 days/month
+    setDays(Math.floor((totalSeconds % (30 * 24 * 60 * 60)) / (24 * 60 * 60)))
+    setHours(Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60)))
+    setMinutes(Math.floor((totalSeconds % (60 * 60)) / 60))
+    setSeconds(totalSeconds % 60)
+
+  }, 1000);
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className='pt-[10vh] '>
+      <video autoPlay loop muted playsInline className="absolute z-[0] sm:h-full h-[90rem] w-full top-0 left-0 object-cover" style={{ mixBlendMode: "color-dodge", opacity: '0.4' }}>
+        <source src="./circuit.mp4" />
+      </video>
+      <div className='z-[1] relative'>
+        <div className="home text-center h-[100vh] pt-[10vh]">
+          <div className='w-full flex justify-center'><div className="logo w-24 border-2 border-transparent rounded-full"><Image src={logo} alt="abc" width={0} height={0} /></div></div>
+          <h1 className='text-center font-extrabold text-[4rem] tracking-[0.1em] to-75% via-20% from-blue-400 via-blue-500 to-pink-400 bg-gradient-to-r bg-clip-text text-transparent font_audiowide'>Alphabit</h1>
+          <h2 className='font-extrabold text-2xl'>Amity Saket Presents Tech Fest 2025</h2>
+          <p className='text-gray-300 mt-4 font-bold'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, laboriosam enim? Beatae atque explicabo, <br /> temporibus blanditiis saepe ipsum sit nisi deserunt. Vel culpa omnis perspiciatis eligendi ducimus dolore sapiente fugiat?</p>
+          <div className="timing flex gap-3 w-full justify-center mt-10">
+            <div className='bg-gray-800 h-24 w-28 rounded-2xl text-white hover:scale-[1.1] transition-all ease-in'>
+              <p className='text-3xl font-bold mt-4'>{month}</p>
+              <p className='mt-2 text-sm text-gray-300'>Month</p>
+            </div>
+            <div className='bg-gray-800 h-24 w-28 rounded-2xl text-white hover:scale-[1.1] transition-all ease-in' >
+              <p className='text-3xl font-bold mt-4'>{days}</p>
+              <p className='mt-2 text-sm text-gray-300'>Days</p>
+            </div>
+            <div className='bg-gray-800 h-24 w-28 rounded-2xl text-white hover:scale-[1.1] transition-all ease-in'>
+              <p className='text-3xl font-bold mt-4'>{hours}</p>
+              <p className='mt-2 text-sm text-gray-300'>Hours</p>
+            </div>
+            <div className='bg-gray-800 h-24 w-28 rounded-2xl text-white hover:scale-[1.1] transition-all ease-in'>
+              <p className='text-3xl font-bold mt-4'>{minutes}</p>
+              <p className='mt-2 text-sm text-gray-300'>Minutes</p>
+            </div>
+            <div className='bg-gray-800 h-24 w-28 rounded-2xl text-white hover:scale-[1.1] transition-all ease-in'>
+              <p className='text-3xl font-bold mt-4'>{seconds}</p>
+              <p className='mt-2 text-sm text-gray-300'>Seconds</p>
+            </div>
+          </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          <button className='to-75% via-20% from-blue-700 via-blue-600 to-purple-800 bg-gradient-to-r text-xl font-bold mt-16 p-3 rounded-3xl w-48 h-15 cursor-pointer hover:from-blue-900 hover:via-blue-800 hover:to-purple-900'>Register Now</button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        <div className='contact h-[100vh] pt-[10vh]'>
+          <h1 className='text-center font-bold text-[2.5rem] to-75% via-20% from-blue-400 via-blue-500 to-pink-400 bg-gradient-to-r bg-clip-text text-transparent'>Get In Touch</h1>
+          <div className='flex max-w-screen gap-10 px-[10rem] mt-5'>
+            <div className="left w-[50%] border-1 border-gray-600 rounded-md h-[34rem] py-6 px-9 bg-gray-600/25">
+              <p className='font-bold text-xl mb-4'>Send us a Message</p>
+              <input type="text" name="name" id="name" placeholder='Your name' className='bg-slate-500/35 w-full h-10 p-2 rounded-md mb-4' /><br />
+              <input type="text" name="email" id="email" placeholder='Your email' className='bg-slate-500/35 w-full h-10 p-2 rounded-md mb-4' /><br />
+              <textarea name="message" id="message" placeholder='Your message' className='bg-slate-500/35 w-full min-h-32 p-2 rounded-md'></textarea><br />
+              <button className='to-75% via-20% from-blue-700 via-blue-600 to-purple-800 bg-gradient-to-r text-lg font-bold mt-7 rounded-md w-full h-12 cursor-pointer hover:from-blue-900 hover:via-blue-800 hover:to-purple-900'>Send Message</button>
+            </div>
+            <div className="right w-1/2">
+              <div className="top border-1 border-gray-600 rounded-md h-[14rem] py-6 px-9 bg-gray-600/25">
+                <p className='font-bold text-xl mb-4' >Contact Information</p>
+                <div className='flex gap-3 items-center mt-2'><p className='text-blue-800'><Mail className='h-5' /></p><p>info@email.com</p></div>
+                <div className='flex gap-3 items-center mt-2'><p className='text-blue-800'><Phone className='h-5' /></p><p>80xxxxxxxx</p></div>
+                <div className='flex gap-3 items-center mt-2'><p className='text-blue-800'><MapPinHouse className='h-5' /></p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod aut </p></div>
+              </div>
+              <div className="bottom border-1 border-gray-600 rounded-md h-[18.27rem] py-6 px-9 bg-gray-600/25 mt-7">
+                <iframe width="100%" height="100%" className="inset-0 rounded-md" frameBorder="0" title="map" marginHeight="0" marginWidth="0" scrolling="no" src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=Amity%20Saket+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  );
+  )
 }
+
+export default Page
