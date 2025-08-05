@@ -3,25 +3,29 @@ import React from 'react'
 import { House, Calendar, UsersRound, Clock, Key } from 'lucide-react';
 import logo from "../Image/alphabit.png"
 import Image from "next/image"
+import Link from 'next/link';
 
 const Navbar = () => {
     const nav_items = [
         {
-            Key: 0,
             icon: <House />,
-            text: "Home"
+            text: "Home",
+            link: "/"
         },
         {
             icon: <Calendar />,
-            text: "Events"
+            text: "Events",
+            link: "/events"
         },
         {
             icon: <UsersRound />,
-            text: "Team"
+            text: "Team",
+            link: "/team"
         },
         {
             icon: <Clock />,
-            text: "Timeline"
+            text: "Timeline",
+            link: "/timeline"
         },
     ]
     return (
@@ -33,10 +37,10 @@ const Navbar = () => {
             <div className="right flex justify-end w-4/5 gap-9 items-center">
                 {Array.isArray(nav_items) && nav_items.map((nav_item) => {
                     return (
-                        <div className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white" key={nav_item.text}>
+                        <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white" key={nav_item.text} href={nav_item.link}>
                             <div className="icon">{nav_item.icon}</div>
                             <div className="text">{nav_item.text}</div>
-                        </div>
+                        </Link>
                     )
                 })}
                 <div className="button">
