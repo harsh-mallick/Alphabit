@@ -31,7 +31,7 @@ const Page = () => {
                 }
             ],
             desc: "Hey there, I'm Harsh Mallick, a 16-year-old with a passion for all things digital. I've dabbled in full-stack web development and 3D design, pouring my creativity into bringing virtual worlds to life.",
-            role: "President, Admin",
+            role: "Admin",
             profile_pic: "https://i.ibb.co/LDfTmQys/Me.png"
         },
     ]
