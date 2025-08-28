@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { Calendar, Clock, MapPin, Users, ExternalLink } from 'lucide-react';
 import Image from "next/image"
@@ -42,14 +43,14 @@ const Page = () => {
         }
     ]
     return (
-        <div className='pt-[10vh] '>
+        <div className='pt-[10vh]'>
             <h1 className='text-center font-extrabold text-[3rem] tracking-[0.1em] to-75% via-20% from-blue-400 via-blue-500 to-purple-600 bg-gradient-to-r bg-clip-text text-transparent'>Events</h1>
             <p className='text-center text-[1.1rem] mt-3'>Discover exciting tech events, workshops, and competitions designed to expand your <br /> knowledge and connect you with fellow innovators.</p>
             <div className='grid grid-cols-3 w-full justify-items-center mt-3'>
                 {Array.isArray(event) && event.map((event) => {
                     return (
                         <div className="card w-[25rem] h-auto border-2 border-gray-800 rounded-2xl bg-gray-800/30 mt-3" key={event.heading}>
-                            <div className="img"> <Image src={event.img} width={400} height={100} alt='img' className='rounded-t-2xl' /></div>
+                            <div className="img "> <Image src={event.img} width={400} height={100} alt='img' className='rounded-t-2xl' /></div>
                             <div className="body p-3">
                                 <div className="heading font-bold text-2xl">{event.heading}</div>
                                 <div className="desc text-[0.95rem] mb-5 mt-2">{event.desc}</div>

@@ -4,6 +4,7 @@ import { House, Calendar, UsersRound, Clock, Key } from 'lucide-react';
 import logo from "../Image/alphabit.png"
 import Image from "next/image"
 import Link from 'next/link';
+import { SignedIn, SignedOut, SignInButton, SignOutButton, SignUpButton, UserButton } from '@clerk/nextjs';
 
 const Navbar = () => {
     const nav_items = [
@@ -34,20 +35,41 @@ const Navbar = () => {
                 <div className="logo"><Image src={logo} alt="abc" width={30} height={30} /></div>
                 <div className="title font-bold text-2xl">Alphabit</div>
             </div>
-            <div className="right flex justify-end w-4/5 gap-9 items-center">
-                {Array.isArray(nav_items) && nav_items.map((nav_item) => {
-                    return (
-                        <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white" key={nav_item.text} href={nav_item.link}>
-                            <div className="icon">{nav_item.icon}</div>
-                            <div className="text">{nav_item.text}</div>
-                        </Link>
-                    )
-                })}
-                <div className="button">
-                    <button className='border-2 border-green-500 mr-3 p-2 rounded-xl cursor-pointer hover:bg-green-300 hover:text-black font-bold'>Sign Up</button>
-                    <button className='border-2 border-yellow-500 mr-3 p-2 rounded-xl cursor-pointer hover:bg-yellow-300 hover:text-black font-bold'>Sign In</button>
+            <SignedOut>
+                <div className="right flex justify-end w-4/5 gap-9 items-center">
+                    {Array.isArray(nav_items) && nav_items.map((nav_item) => {
+                        return (
+                            <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white" key={nav_item.text} href={nav_item.link}>
+                                <div className="icon">{nav_item.icon}</div>
+                                <div className="text">{nav_item.text}</div>
+                            </Link>
+                        )
+                    })}
+                    <div className="button">
+                        <SignUpButton>
+                            <button className='border-2 border-green-500 mr-3 p-2 rounded-xl cursor-pointer hover:bg-green-300 hover:text-black font-bold'>Sign Up</button>
+                        </SignUpButton>
+                        <SignInButton>
+                            <button className='border-2 border-yellow-500 mr-3 p-2 rounded-xl cursor-pointer hover:bg-yellow-300 hover:text-black font-bold'>Sign In</button>
+                        </SignInButton>
+                    </div>
                 </div>
-            </div>
+            </SignedOut>
+            <SignedIn>
+                <div className="right flex justify-end w-4/5 gap-9 items-center">
+                    {Array.isArray(nav_items) && nav_items.map((nav_item) => {
+                        return (
+                            <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white" key={nav_item.text} href={nav_item.link}>
+                                <div className="icon">{nav_item.icon}</div>
+                                <div className="text">{nav_item.text}</div>
+                            </Link>
+                        )
+                    })}
+                    <div className="mr-4">
+                        <UserButton />
+                    </div>
+                </div>
+            </SignedIn>
         </div>
     )
 }

@@ -24,3 +24,9 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.card:hover .img {
+  scale: 1.01;
+  overflow: none;
+  object-fit: cover;
+}
