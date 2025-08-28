@@ -30,10 +30,12 @@ const Page = () => {
                     target: "_blank"
                 }
             ],
-            desc: "Hey there, I'm Harsh Mallick, a 16-year-old with a passion for all things digital. I've dabbled in full-stack web development and 3D design, pouring my creativity into bringing virtual worlds to life.",
+            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate cumque exercitationem, minus obcaecati aut ex odit, nemo excepturi ratione quisquam quidem nihil rerum harum recusandae ipsam? Provident quaerat hic aperiam.",
             role: "Admin",
             profile_pic: "https://i.ibb.co/LDfTmQys/Me.png"
+
         },
+
     ]
     return (
         <div className='pt-[10vh]'>
