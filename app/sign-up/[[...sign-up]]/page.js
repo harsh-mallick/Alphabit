@@ -26,13 +26,20 @@ const Page = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [verificationError, setVerificationError] = useState(null)
     const [authError, setAuthError] = useState(null);
+    const [class_, setclass_] = useState(null)
+    const [comp_category, setcomp_category] = useState(null)
+    const [phonenumber, setphonenumber] = useState(null)
+    const [school_name, setschool_name] = useState(null)
+    const [clerkID, setclerkID] = useState(null)
+    const [name, setname] = useState(null)
+
     const router = useRouter()
     const formSchema = z.object({
         first_name: z.string().min(1, "First name is required"),
         last_name: z.string().min(1, "Last name is required"),
         email: z.string().email("Invalid email address"),
-        class: z.string().min(1, "Class is required"),
-        foi: z.string().min(1, "Field of Interest is required"),   // fixed
+        class_: z.string().min(1, "Class is required"),
+        comp_category: z.string().min(1, "Field of Interest is required"),   // fixed
         phonenumber: z.string().min(10, "Phone number is too short"), // fixed
         school_name: z.string().min(1, "School name is required"), // fixed
         password: z.string().min(8, "Password must be at least 8 characters"),
@@ -58,15 +65,16 @@ const Page = () => {
         setAuthError(null);
 
         try {
+            const UUID = crypto.randomUUID()
             await signUp.create({
                 emailAddress: data.email,
                 password: data.password,
                 firstName: data.first_name,
                 lastName: data.last_name,
-                username: crypto.randomUUID(),
+                username: UUID,
                 publicMetadata: {
-                    class: data.class,
-                    foi: data.foi,
+                    class_: data.class_,
+                    comp_category: data.comp_category,
                     phonenumber: data.phonenumber,
                     school_name: data.school_name,
                 },
@@ -74,7 +82,12 @@ const Page = () => {
                     role: "member",
                 },
             });
-
+            setclass_(data.class_)
+            setcomp_category(data.comp_category)
+            setphonenumber(data.phonenumber)
+            setschool_name(data.school_name)
+            setclerkID(UUID)
+            setname(data.first_name + " " + data.last_name)
 
             await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
             setVerifying(true);
@@ -95,10 +108,24 @@ const Page = () => {
             const result = await signUp.attemptEmailAddressVerification({
                 code: verificationCode
             })
-            console.log(result)
             if (result.status === "complete") {
-                await setActive({ session: result.createdSessionId })
-                router.push("/")
+                const response = await fetch("/api/signup", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        class_, comp_category, phonenumber, school_name, clerkID, name
+                    })
+                })
+                const data = await response.json()
+                if (response.status === 500 || !data) {
+                    console.log("Failed to register user")
+                } else {
+                    await setActive({ session: result.createdSessionId })
+                    router.push("/")
+                }
+
             } else {
                 console.log("Verification incomplete", result)
                 setVerificationError("Verification could not be completed")
@@ -269,7 +296,7 @@ const Page = () => {
                                 required
                             />
                         </div>
-                        {errors.last_name && (<p className="text-red-500 text-sm">{errors.last_name}</p>)}
+                        {errors.last_name && (<p className="text-red-500 text-sm">{errors.last_name.message}</p>)}
                     </div>
 
                     <div className="space-y-2 mx-3.5 w-lg">
@@ -288,41 +315,41 @@ const Page = () => {
                                 required
                             />
                         </div>
-                        {errors.email && (<p className="text-red-500 text-sm">{errors.email}</p>)}
+                        {errors.email && (<p className="text-red-500 text-sm">{errors.email.message}</p>)}
                     </div>
 
                     <div className="space-y-2 mx-3.5 w-lg">
-                        <label htmlFor="class" className="text-sm font-medium">
+                        <label htmlFor="class_" className="text-sm font-medium">
                             Class
                         </label>
                         <div className="relative">
                             <BookOpen className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
                             <Input
-                                id="class"
-                                name="class"
+                                id="class_"
+                                name="class_"
                                 placeholder="Your class"
                                 className="pl-10 text-black"
-                                {...register("class")}
+                                {...register("class_")}
                                 required
                             />
                         </div>
-                        {errors.class && (<p className="text-red-500 text-sm">{errors.class}</p>)}
+                        {errors.class_ && (<p className="text-red-500 text-sm">{errors.class_.message}</p>)}
                     </div>
 
                     <div className="space-y-2 mx-3.5 w-lg">
-                        <label htmlFor="foi" className="text-sm font-medium">
+                        <label htmlFor="comp_category" className="text-sm font-medium">
                             Competition Category
                         </label>
-                        <Select onValueChange={(value) => setValue("foi", value)}
+                        <Select onValueChange={(value) => setValue("comp_category", value)}
                         >
                             <SelectTrigger className="text-black">
                                 <SelectValue placeholder="Select your field of interest" />
                             </SelectTrigger>
                             <SelectContent className="text-black">
-                                <SelectItem value="web">Cretica</SelectItem>
-                                <SelectItem value="mobile">Debug.Log</SelectItem>
-                                <SelectItem value="ai">Innovat-a-Thon</SelectItem>
-                                <SelectItem value="cybersecurity">Q?bit</SelectItem>
+                                <SelectItem value="Cretica">Cretica</SelectItem>
+                                <SelectItem value="Debug.Log">Debug.Log</SelectItem>
+                                <SelectItem value="Innovat-a-Thon">Innovat-a-Thon</SelectItem>
+                                <SelectItem value="Q?bit">Q?bit</SelectItem>
                             </SelectContent>
                         </Select>
                     </div>
@@ -343,7 +370,7 @@ const Page = () => {
                                 required
                             />
                         </div>
-                        {errors.phonenumber && (<p className="text-red-500 text-sm">{errors.phonenumber}</p>)}
+                        {errors.phonenumber && (<p className="text-red-500 text-sm">{errors.phonenumber.message}</p>)}
                     </div>
 
                     <div className="space-y-2 mx-3.5 w-lg">
@@ -361,7 +388,7 @@ const Page = () => {
                                 required
                             />
                         </div>
-                        {errors.school_name && (<p className="text-red-500 text-sm">{errors.school_name}</p>)}
+                        {errors.school_name && (<p className="text-red-500 text-sm">{errors.school_name.message}</p>)}
                     </div>
 
                     <div className="space-y-2 mx-3.5 w-lg">
@@ -381,7 +408,7 @@ const Page = () => {
                                 {...register("password")}
                             />
                         </div>
-                        {errors.password && (<p className="text-red-500 text-sm">{errors.password}</p>)}
+                        {errors.password && (<p className="text-red-500 text-sm">{errors.password.message}</p>)}
                     </div>
 
                     <div className="space-y-2 mx-3.5 w-lg">
@@ -404,7 +431,7 @@ const Page = () => {
                                 {...register("passwordConfirmation")}
                             />
                         </div>
-                        {errors.passwordConfirmation && (<p className="text-red-500 text-sm">{errors.passwordConfirmation}</p>)}
+                        {errors.passwordConfirmation && (<p className="text-red-500 text-sm">{errors.passwordConfirmation.message}</p>)}
                     </div>
 
                     <Button

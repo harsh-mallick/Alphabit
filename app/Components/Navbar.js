@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { House, Calendar, UsersRound, Clock, Key } from 'lucide-react';
+import { House, Calendar, UsersRound, Clock, LogOut, User } from 'lucide-react';
 import logo from "../Image/alphabit.png"
 import Image from "next/image"
 import Link from 'next/link';
@@ -65,9 +65,11 @@ const Navbar = () => {
                             </Link>
                         )
                     })}
-                    <div className="mr-4">
-                        <UserButton />
-                    </div>
+                    <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white" href="/profile">
+                        <div className="icon"><User /></div>
+                        <div className="text">Profile</div>
+                    </Link>
+                    <SignOutButton className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white mr-5"><LogOut /></SignOutButton>
                 </div>
             </SignedIn>
         </div>
