@@ -1,17 +1,51 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import logo from "./Image/alphabit.png"
 import Image from "next/image"
 import { Mail, Phone, MapPinHouse } from 'lucide-react';
+import { useUser } from '@clerk/nextjs'
+
 
 const Page = () => {
-
+  const { user, isLoaded } = useUser()
   const eventDate = new Date("2025-09-15T09:00:00").getTime();
   const [month, setMonth] = useState()
   const [days, setDays] = useState()
   const [hours, setHours] = useState()
   const [minutes, setMinutes] = useState()
   const [seconds, setSeconds] = useState()
+  const [isfetching, setisfetching] = useState(true)
+
+  const fetchdata = async () => {
+    if (isLoaded && isfetching) {
+      try {
+        const response = await fetch("/api/profile", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ clerkID: user?.username }),
+        });
+
+        const data = await response.json();
+        console.log("Profile data:", data.data.name);
+        if (typeof window != undefined && data.data) {
+          localStorage.setItem("teacher_incharge", data.data.name)
+          localStorage.setItem("teacher_incharge_clerkID", data.data.clerkID)
+          localStorage.setItem("school_name", data.data.school_name)
+        }
+
+        setisfetching(false)
+
+      } catch (error) {
+        console.error("Error fetching profile:", error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    fetchdata();
+  }, [user?.username, isLoaded]);
 
   const timer = setInterval(() => {
     const now = new Date().getTime();

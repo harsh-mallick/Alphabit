@@ -7,10 +7,10 @@ export async function POST(req) {
     try {
         const body = await req.json()
         console.log(body)
-        const { name, clerkID, class_, comp_category, phonenumber, school_name, role } = body
+        const { name, clerkID, phonenumber, school_name, role } = body
 
         const user_reg = new UserPage({
-            name, clerkID, class_, comp_category, phonenumber, school_name, role
+            name, clerkID, phonenumber, school_name, role
         })
         console.log(user_reg)
         const register = await user_reg.save()

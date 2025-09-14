@@ -26,8 +26,6 @@ const Page = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [verificationError, setVerificationError] = useState(null)
     const [authError, setAuthError] = useState(null);
-    const [class_, setclass_] = useState(null)
-    const [comp_category, setcomp_category] = useState(null)
     const [phonenumber, setphonenumber] = useState(null)
     const [school_name, setschool_name] = useState(null)
     const [clerkID, setclerkID] = useState(null)
@@ -38,8 +36,6 @@ const Page = () => {
         first_name: z.string().min(1, "First name is required"),
         last_name: z.string().min(1, "Last name is required"),
         email: z.string().email("Invalid email address"),
-        class_: z.string().min(1, "Class is required"),
-        comp_category: z.string().min(1, "Field of Interest is required"),   // fixed
         phonenumber: z.string().min(10, "Phone number is too short"), // fixed
         school_name: z.string().min(1, "School name is required"), // fixed
         password: z.string().min(8, "Password must be at least 8 characters"),
@@ -73,17 +69,13 @@ const Page = () => {
                 lastName: data.last_name,
                 username: UUID,
                 publicMetadata: {
-                    class_: data.class_,
-                    comp_category: data.comp_category,
                     phonenumber: data.phonenumber,
                     school_name: data.school_name,
                 },
                 privateMetadata: {
-                    role: "member",
+                    role: "Teacher Incharge",
                 },
             });
-            setclass_(data.class_)
-            setcomp_category(data.comp_category)
             setphonenumber(data.phonenumber)
             setschool_name(data.school_name)
             setclerkID(UUID)
@@ -115,7 +107,7 @@ const Page = () => {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        class_, comp_category, phonenumber, school_name, clerkID, name
+                        phonenumber, school_name, clerkID, name
                     })
                 })
                 const data = await response.json()
@@ -255,7 +247,7 @@ const Page = () => {
             ))}
             <div className="text-center mb-4 mt-2 z-[2]">
                 <h1 className="text-3xl font-space-grotesk font-bold mb-2 z-[2]">
-                    Create Account (Team Head)
+                    Create Account (Teacher Incharge)
                 </h1>
                 <p className="text-muted-foreground">
                     Join us for a wonderful experience
@@ -316,42 +308,6 @@ const Page = () => {
                             />
                         </div>
                         {errors.email && (<p className="text-red-500 text-sm">{errors.email.message}</p>)}
-                    </div>
-
-                    <div className="space-y-2 mx-3.5 w-lg">
-                        <label htmlFor="class_" className="text-sm font-medium">
-                            Class
-                        </label>
-                        <div className="relative">
-                            <BookOpen className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
-                            <Input
-                                id="class_"
-                                name="class_"
-                                placeholder="Your class"
-                                className="pl-10 text-black"
-                                {...register("class_")}
-                                required
-                            />
-                        </div>
-                        {errors.class_ && (<p className="text-red-500 text-sm">{errors.class_.message}</p>)}
-                    </div>
-
-                    <div className="space-y-2 mx-3.5 w-lg">
-                        <label htmlFor="comp_category" className="text-sm font-medium">
-                            Competition Category
-                        </label>
-                        <Select onValueChange={(value) => setValue("comp_category", value)}
-                        >
-                            <SelectTrigger className="text-black">
-                                <SelectValue placeholder="Select your field of interest" />
-                            </SelectTrigger>
-                            <SelectContent className="text-black">
-                                <SelectItem value="Cretica">Cretica</SelectItem>
-                                <SelectItem value="Debug.Log">Debug.Log</SelectItem>
-                                <SelectItem value="Innovat-a-Thon">Innovat-a-Thon</SelectItem>
-                                <SelectItem value="Q?bit">Q?bit</SelectItem>
-                            </SelectContent>
-                        </Select>
                     </div>
 
                     <div className="space-y-2 mx-3.5 w-lg">

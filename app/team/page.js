@@ -1,3 +1,4 @@
+"use client"
 import React, { Profiler } from 'react'
 import { Calendar, Clock, MapPin, Users, Mail, Github } from 'lucide-react';
 import Link from 'next/link';

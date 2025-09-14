@@ -9,14 +9,6 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    class_: {
-        type: String,
-        required: true
-    },
-    comp_category: {
-        type: String,
-        required: true
-    },
     phonenumber: {
         type: Number,
         required: true
@@ -27,7 +19,7 @@ const userSchema = mongoose.Schema({
     },
     role: {
         type: String,
-        default: "user"
+        default: "Teacher Incharge"
     }
 })
 

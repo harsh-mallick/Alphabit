@@ -50,7 +50,7 @@ const Page = () => {
                         <div>
                             <div className="left mr-8 rounded-xl p-4 mb-4 flex justify-center">
                                 <div>
-                                    <p className='font-bold text-2xl'>{data?.name}</p>
+                                    <p className='font-bold text-2xl text-center'>{data?.name}</p>
                                     <p className='font-bold text-xl text-center'>{data?.role}</p>
                                     <Image src={Profile} width={0} height={0} alt="" srcset="" className='w-40 mt-5' />
                                 </div>
@@ -80,14 +80,6 @@ const Page = () => {
                                         <div className='mt-4'>
                                             <p className="text-gray-400 font-bold">Last name</p>
                                             <p className="text-lg">{user?.lastName}</p>
-                                        </div>
-                                        <div className='mt-4'>
-                                            <p className="text-gray-400 font-bold">Class</p>
-                                            <p className="text-lg">{data?.class_}</p>
-                                        </div>
-                                        <div className='mt-4'>
-                                            <p className="text-gray-400 font-bold">Competition Events</p>
-                                            <p className="text-lg">{data?.comp_category}</p>
                                         </div>
                                     </div>
                                 </div>
