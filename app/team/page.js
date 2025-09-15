@@ -33,9 +33,9 @@ const Page = () => {
                     target: "_blank"
                 }
             ],
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate cumque exercitationem, minus obcaecati aut ex odit, nemo excepturi ratione quisquam quidem nihil rerum harum recusandae ipsam? Provident quaerat hic aperiam.",
+            desc: "I’m Harsh Mallick, and I have a passion for all things digital. From full-stack web development to 3D design, I love building virtual worlds that merge creativity with tech. In my free time, I dive into the latest AI releases, always curious about how new tools can be woven into projects. For me, Alphabit is like a canvas to experiment, innovate, and share ideas that spark inspiration in the tech community.",
             role: "Overall Student Incharge",
-            profile_pic: "https://i.ibb.co/LDfTmQys/Me.png"
+            profile_pic: ""
 
         },
         {
