@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { UserRound } from "lucide-react"
 import Profile from "../Image/Profile.png"
 import Image from 'next/image'
+import Loading from "../Components/Loading"
 
 const Page = () => {
     const { user, isLoaded } = useUser()
@@ -39,7 +40,7 @@ const Page = () => {
     if (isfetching) {
         return (
             <div className='pt-[10vh]'>
-                Loading.....
+                <Loading />
             </div>
         )
     } else {

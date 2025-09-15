@@ -1,11 +1,43 @@
 "use client"
-import React, { Profiler } from 'react'
-import { Calendar, Clock, MapPin, Users, Mail, Github } from 'lucide-react';
+import React, { Profiler, useRef, useEffect, useState } from 'react'
+import { Calendar, Clock, Linkedin, MapPin, Users, Mail, Github } from 'lucide-react';
 import Link from 'next/link';
-import Image from "next/image"
+import Image from "next/image";
+import * as THREE from "three"
+import NET from "vanta/dist/vanta.globe.min" // 
 
 const Page = () => {
     const team = [
+        {
+            name: "Piyush Kumar Raj",
+            social_handles: [
+                {
+                    name: "Github",
+                    icon: <Github className='text-[0.95]' />,
+                    username: "Piyush-KR09",
+                    link: "https://github.com/Piyush-KR09",
+                    target: "_blank"
+                },
+                {
+                    name: "Email",
+                    icon: <Mail />,
+                    username: "piyushkumarraj320@gmail.com",
+                    link: "",
+                    target: "_self"
+                },
+                {
+                    name: "Discord",
+                    icon: <img alt="svgImg" width={30} src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRkZGRkZGIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNTAgNTAiIHdpZHRoPSI1MHB4IiBoZWlnaHQ9IjUwcHgiPjxwYXRoIGQ9Ik0gMTguOTA2MjUgNyBDIDE4LjkwNjI1IDcgMTIuNTM5MDYzIDcuNDM3NSA4LjM3NSAxMC43ODEyNSBDIDguMzU1NDY5IDEwLjc4OTA2MyA4LjMzMjAzMSAxMC44MDA3ODEgOC4zMTI1IDEwLjgxMjUgQyA3LjU4OTg0NCAxMS40ODA0NjkgNy4wNDY4NzUgMTIuNTE1NjI1IDYuMzc1IDE0IEMgNS43MDMxMjUgMTUuNDg0Mzc1IDQuOTkyMTg4IDE3LjM5NDUzMSA0LjM0Mzc1IDE5LjUzMTI1IEMgMy4wNTA3ODEgMjMuODA4NTk0IDIgMjkuMDU4NTk0IDIgMzQgQyAxLjk5NjA5NCAzNC4xNzU3ODEgMi4wMzkwNjMgMzQuMzQ3NjU2IDIuMTI1IDM0LjUgQyAzLjU4NTkzOCAzNy4wNjY0MDYgNi4yNzM0MzggMzguNjE3MTg4IDguNzgxMjUgMzkuNTkzNzUgQyAxMS4yODkwNjMgNDAuNTcwMzEzIDEzLjYwNTQ2OSA0MC45NjA5MzggMTQuNzgxMjUgNDEgQyAxNS4xMTMyODEgNDEuMDExNzE5IDE1LjQyOTY4OCA0MC44NTkzNzUgMTUuNjI1IDQwLjU5Mzc1IEwgMTguMDYyNSAzNy4yMTg3NSBDIDIwLjAyNzM0NCAzNy42ODM1OTQgMjIuMzMyMDMxIDM4IDI1IDM4IEMgMjcuNjY3OTY5IDM4IDI5Ljk3MjY1NiAzNy42ODM1OTQgMzEuOTM3NSAzNy4yMTg3NSBMIDM0LjM3NSA0MC41OTM3NSBDIDM0LjU3MDMxMyA0MC44NTkzNzUgMzQuODg2NzE5IDQxLjAxMTcxOSAzNS4yMTg3NSA0MSBDIDM2LjM5NDUzMSA0MC45NjA5MzggMzguNzEwOTM4IDQwLjU3MDMxMyA0MS4yMTg3NSAzOS41OTM3NSBDIDQzLjcyNjU2MyAzOC42MTcxODggNDYuNDE0MDYzIDM3LjA2NjQwNiA0Ny44NzUgMzQuNSBDIDQ3Ljk2MDkzOCAzNC4zNDc2NTYgNDguMDAzOTA2IDM0LjE3NTc4MSA0OCAzNCBDIDQ4IDI5LjA1ODU5NCA0Ni45NDkyMTkgMjMuODA4NTk0IDQ1LjY1NjI1IDE5LjUzMTI1IEMgNDUuMDA3ODEzIDE3LjM5NDUzMSA0NC4yOTY4NzUgMTUuNDg0Mzc1IDQzLjYyNSAxNCBDIDQyLjk1MzEyNSAxMi41MTU2MjUgNDIuNDEwMTU2IDExLjQ4MDQ2OSA0MS42ODc1IDEwLjgxMjUgQyA0MS42Njc5NjkgMTAuODAwNzgxIDQxLjY0NDUzMSAxMC43ODkwNjMgNDEuNjI1IDEwLjc4MTI1IEMgMzcuNDYwOTM4IDcuNDM3NSAzMS4wOTM3NSA3IDMxLjA5Mzc1IDcgQyAzMS4wMTk1MzEgNi45OTIxODggMzAuOTQ5MjE5IDYuOTkyMTg4IDMwLjg3NSA3IEMgMzAuNTI3MzQ0IDcuMDQ2ODc1IDMwLjIzNDM3NSA3LjI3MzQzOCAzMC4wOTM3NSA3LjU5Mzc1IEMgMzAuMDkzNzUgNy41OTM3NSAyOS43NTM5MDYgOC4zMzk4NDQgMjkuNTMxMjUgOS40MDYyNSBDIDI3LjU4MjAzMSA5LjA5Mzc1IDI1Ljk0MTQwNiA5IDI1IDkgQyAyNC4wNTg1OTQgOSAyMi40MTc5NjkgOS4wOTM3NSAyMC40Njg3NSA5LjQwNjI1IEMgMjAuMjQ2MDk0IDguMzM5ODQ0IDE5LjkwNjI1IDcuNTkzNzUgMTkuOTA2MjUgNy41OTM3NSBDIDE5LjczNDM3NSA3LjIwMzEyNSAxOS4zMzIwMzEgNi45NjQ4NDQgMTguOTA2MjUgNyBaIE0gMTguMjgxMjUgOS4xNTYyNSBDIDE4LjM1NTQ2OSA5LjM1OTM3NSAxOC40MDYyNSA5LjU1MDc4MSAxOC40Njg3NSA5Ljc4MTI1IEMgMTYuMjE0ODQ0IDEwLjMwNDY4OCAxMy43NDYwOTQgMTEuMTYwMTU2IDExLjQzNzUgMTIuNTkzNzUgQyAxMS4wNzQyMTkgMTIuNzQ2MDk0IDEwLjgzNTkzOCAxMy4wOTc2NTYgMTAuODI0MjE5IDEzLjQ5MjE4OCBDIDEwLjgxNjQwNiAxMy44ODI4MTMgMTEuMDM5MDYzIDE0LjI0NjA5NCAxMS4zOTA2MjUgMTQuNDE3OTY5IEMgMTEuNzQ2MDk0IDE0LjU4NTkzOCAxMi4xNjc5NjkgMTQuNTM1MTU2IDEyLjQ2ODc1IDE0LjI4MTI1IEMgMTcuMTAxNTYzIDExLjQxMDE1NiAyMi45OTYwOTQgMTEgMjUgMTEgQyAyNy4wMDM5MDYgMTEgMzIuODk4NDM4IDExLjQxMDE1NiAzNy41MzEyNSAxNC4yODEyNSBDIDM3LjgzMjAzMSAxNC41MzUxNTYgMzguMjUzOTA2IDE0LjU4NTkzOCAzOC42MDkzNzUgMTQuNDE3OTY5IEMgMzguOTYwOTM4IDE0LjI0NjA5NCAzOS4xODM1OTQgMTMuODgyODEzIDM5LjE3NTc4MSAxMy40OTIxODggQyAzOS4xNjQwNjMgMTMuMDk3NjU2IDM4LjkyNTc4MSAxMi43NDYwOTQgMzguNTYyNSAxMi41OTM3NSBDIDM2LjI1MzkwNiAxMS4xNjAxNTYgMzMuNzg1MTU2IDEwLjMwNDY4OCAzMS41MzEyNSA5Ljc4MTI1IEMgMzEuNTkzNzUgOS41NTA3ODEgMzEuNjQ0NTMxIDkuMzU5Mzc1IDMxLjcxODc1IDkuMTU2MjUgQyAzMi44NTkzNzUgOS4yOTY4NzUgMzcuMjkyOTY5IDkuODk0NTMxIDQwLjMxMjUgMTIuMjgxMjUgQyA0MC41MDc4MTMgMTIuNDYwOTM4IDQxLjE4NzUgMTMuNDYwOTM4IDQxLjgxMjUgMTQuODQzNzUgQyA0Mi40Mzc1IDE2LjIyNjU2MyA0My4wOTM3NSAxOC4wMjczNDQgNDMuNzE4NzUgMjAuMDkzNzUgQyA0NC45Mzc1IDI0LjEyNSA0NS45MjE4NzUgMjkuMDk3NjU2IDQ1Ljk2ODc1IDMzLjY1NjI1IEMgNDQuODMyMDMxIDM1LjQ5NjA5NCA0Mi42OTkyMTkgMzYuODYzMjgxIDQwLjUgMzcuNzE4NzUgQyAzOC41IDM4LjQ5NjA5NCAzNi42MzI4MTMgMzguODQzNzUgMzUuNjU2MjUgMzguOTM3NSBMIDMzLjk2ODc1IDM2LjY1NjI1IEMgMzQuODI4MTI1IDM2LjM3ODkwNiAzNS42MDE1NjMgMzYuMDc4MTI1IDM2LjI4MTI1IDM1Ljc4MTI1IEMgMzguODA0Njg4IDM0LjY3MTg3NSA0MC4xNTYyNSAzMy41IDQwLjE1NjI1IDMzLjUgQyA0MC41NzAzMTMgMzMuMTI4OTA2IDQwLjYwNTQ2OSAzMi40OTIxODggNDAuMjM0Mzc1IDMyLjA3ODEyNSBDIDM5Ljg2MzI4MSAzMS42NjQwNjMgMzkuMjI2NTYzIDMxLjYyODkwNiAzOC44MTI1IDMyIEMgMzguODEyNSAzMiAzNy43NjU2MjUgMzIuOTU3MDMxIDM1LjQ2ODc1IDMzLjk2ODc1IEMgMzQuNjI1IDM0LjMzOTg0NCAzMy42MDE1NjMgMzQuNzA3MDMxIDMyLjQzNzUgMzUuMDMxMjUgQyAzMi4xNjc5NjkgMzUgMzEuODk4NDM4IDM1LjA3ODEyNSAzMS42ODc1IDM1LjI1IEMgMjkuODI0MjE5IDM1LjcwMzEyNSAyNy42MDkzNzUgMzYgMjUgMzYgQyAyMi4zNzEwOTQgMzYgMjAuMTUyMzQ0IDM1LjY3NTc4MSAxOC4yODEyNSAzNS4yMTg3NSBDIDE4LjA3MDMxMyAzNS4wNzgxMjUgMTcuODEyNSAzNS4wMTk1MzEgMTcuNTYyNSAzNS4wNjI1IEMgMTYuMzk0NTMxIDM0LjczODI4MSAxNS4zNzg5MDYgMzQuMzM5ODQ0IDE0LjUzMTI1IDMzLjk2ODc1IEMgMTIuMjM0Mzc1IDMyLjk1NzAzMSAxMS4xODc1IDMyIDExLjE4NzUgMzIgQyAxMC45NjA5MzggMzEuNzg5MDYzIDEwLjY0ODQzOCAzMS42OTkyMTkgMTAuMzQzNzUgMzEuNzUgQyA5Ljk1NzAzMSAzMS44MDg1OTQgOS42MzY3MTkgMzIuMDg1OTM4IDkuNTMxMjUgMzIuNDY0ODQ0IEMgOS40MjE4NzUgMzIuODM5ODQ0IDkuNTQ2ODc1IDMzLjI0NjA5NCA5Ljg0Mzc1IDMzLjUgQyA5Ljg0Mzc1IDMzLjUgMTEuMTk1MzEzIDM0LjY3MTg3NSAxMy43MTg3NSAzNS43ODEyNSBDIDE0LjM5ODQzOCAzNi4wNzgxMjUgMTUuMTcxODc1IDM2LjM3ODkwNiAxNi4wMzEyNSAzNi42NTYyNSBMIDE0LjM0Mzc1IDM4LjkzNzUgQyAxMy4zNjcxODggMzguODQzNzUgMTEuNSAzOC40OTYwOTQgOS41IDM3LjcxODc1IEMgNy4zMDA3ODEgMzYuODYzMjgxIDUuMTY3OTY5IDM1LjQ5NjA5NCA0LjAzMTI1IDMzLjY1NjI1IEMgNC4wNzgxMjUgMjkuMDk3NjU2IDUuMDYyNSAyNC4xMjUgNi4yODEyNSAyMC4wOTM3NSBDIDYuOTA2MjUgMTguMDI3MzQ0IDcuNTYyNSAxNi4yMjY1NjMgOC4xODc1IDE0Ljg0Mzc1IEMgOC44MTI1IDEzLjQ2MDkzOCA5LjQ5MjE4OCAxMi40NjA5MzggOS42ODc1IDEyLjI4MTI1IEMgMTIuNzA3MDMxIDkuODk0NTMxIDE3LjE0MDYyNSA5LjI5Njg3NSAxOC4yODEyNSA5LjE1NjI1IFogTSAxOC41IDIxIEMgMTUuOTQ5MjE5IDIxIDE0IDIzLjMxNjQwNiAxNCAyNiBDIDE0IDI4LjY4MzU5NCAxNS45NDkyMTkgMzEgMTguNSAzMSBDIDIxLjA1MDc4MSAzMSAyMyAyOC42ODM1OTQgMjMgMjYgQyAyMyAyMy4zMTY0MDYgMjEuMDUwNzgxIDIxIDE4LjUgMjEgWiBNIDMxLjUgMjEgQyAyOC45NDkyMTkgMjEgMjcgMjMuMzE2NDA2IDI3IDI2IEMgMjcgMjguNjgzNTk0IDI4Ljk0OTIxOSAzMSAzMS41IDMxIEMgMzQuMDUwNzgxIDMxIDM2IDI4LjY4MzU5NCAzNiAyNiBDIDM2IDIzLjMxNjQwNiAzNC4wNTA3ODEgMjEgMzEuNSAyMSBaIE0gMTguNSAyMyBDIDE5LjgxNjQwNiAyMyAyMSAyNC4yNjU2MjUgMjEgMjYgQyAyMSAyNy43MzQzNzUgMTkuODE2NDA2IDI5IDE4LjUgMjkgQyAxNy4xODM1OTQgMjkgMTYgMjcuNzM0Mzc1IDE2IDI2IEMgMTYgMjQuMjY1NjI1IDE3LjE4MzU5NCAyMyAxOC41IDIzIFogTSAzMS41IDIzIEMgMzIuODE2NDA2IDIzIDM0IDI0LjI2NTYyNSAzNCAyNiBDIDM0IDI3LjczNDM3NSAzMi44MTY0MDYgMjkgMzEuNSAyOSBDIDMwLjE4MzU5NCAyOSAyOSAyNy43MzQzNzUgMjkgMjYgQyAyOSAyNC4yNjU2MjUgMzAuMTgzNTk0IDIzIDMxLjUgMjMgWiIvPjwvc3ZnPg==" />,
+                    username: "piyush",
+                    link: "https://discord.com/users/814532430957641728",
+                    target: "_blank"
+                }
+            ],
+            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate cumque exercitationem, minus obcaecati aut ex odit, nemo excepturi ratione quisquam quidem nihil rerum harum recusandae ipsam? Provident quaerat hic aperiam.",
+            role: "Overall Student Incharge",
+            profile_pic: "https://i.ibb.co/LDfTmQys/Me.png"
+
+        },
         {
             name: "Harsh Mallick",
             social_handles: [
@@ -32,35 +64,98 @@ const Page = () => {
                 }
             ],
             desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate cumque exercitationem, minus obcaecati aut ex odit, nemo excepturi ratione quisquam quidem nihil rerum harum recusandae ipsam? Provident quaerat hic aperiam.",
-            role: "Admin",
+            role: "Overall Student Incharge",
             profile_pic: "https://i.ibb.co/LDfTmQys/Me.png"
+
+        },
+        {
+            name: "Aditri Bhatnagar",
+            social_handles: [
+                {
+                    name: "Linkedin",
+                    icon: <Linkedin className='text-[0.95]' />,
+                    username: "aditri-bhatnagar",
+                    link: "https://www.linkedin.com/in/aditri-bhatnagar-236234212/?originalSubdomain=in",
+                    target: "_blank"
+                },
+                {
+                    name: "Email",
+                    icon: <Mail />,
+                    username: "aditribhatnagar132@gmail.com",
+                    link: "",
+                    target: "_self"
+                },
+                {
+                    name: "Discord",
+                    icon: <img alt="svgImg" width={30} src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRkZGRkZGIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNTAgNTAiIHdpZHRoPSI1MHB4IiBoZWlnaHQ9IjUwcHgiPjxwYXRoIGQ9Ik0gMTguOTA2MjUgNyBDIDE4LjkwNjI1IDcgMTIuNTM5MDYzIDcuNDM3NSA4LjM3NSAxMC43ODEyNSBDIDguMzU1NDY5IDEwLjc4OTA2MyA4LjMzMjAzMSAxMC44MDA3ODEgOC4zMTI1IDEwLjgxMjUgQyA3LjU4OTg0NCAxMS40ODA0NjkgNy4wNDY4NzUgMTIuNTE1NjI1IDYuMzc1IDE0IEMgNS43MDMxMjUgMTUuNDg0Mzc1IDQuOTkyMTg4IDE3LjM5NDUzMSA0LjM0Mzc1IDE5LjUzMTI1IEMgMy4wNTA3ODEgMjMuODA4NTk0IDIgMjkuMDU4NTk0IDIgMzQgQyAxLjk5NjA5NCAzNC4xNzU3ODEgMi4wMzkwNjMgMzQuMzQ3NjU2IDIuMTI1IDM0LjUgQyAzLjU4NTkzOCAzNy4wNjY0MDYgNi4yNzM0MzggMzguNjE3MTg4IDguNzgxMjUgMzkuNTkzNzUgQyAxMS4yODkwNjMgNDAuNTcwMzEzIDEzLjYwNTQ2OSA0MC45NjA5MzggMTQuNzgxMjUgNDEgQyAxNS4xMTMyODEgNDEuMDExNzE5IDE1LjQyOTY4OCA0MC44NTkzNzUgMTUuNjI1IDQwLjU5Mzc1IEwgMTguMDYyNSAzNy4yMTg3NSBDIDIwLjAyNzM0NCAzNy42ODM1OTQgMjIuMzMyMDMxIDM4IDI1IDM4IEMgMjcuNjY3OTY5IDM4IDI5Ljk3MjY1NiAzNy42ODM1OTQgMzEuOTM3NSAzNy4yMTg3NSBMIDM0LjM3NSA0MC41OTM3NSBDIDM0LjU3MDMxMyA0MC44NTkzNzUgMzQuODg2NzE5IDQxLjAxMTcxOSAzNS4yMTg3NSA0MSBDIDM2LjM5NDUzMSA0MC45NjA5MzggMzguNzEwOTM4IDQwLjU3MDMxMyA0MS4yMTg3NSAzOS41OTM3NSBDIDQzLjcyNjU2MyAzOC42MTcxODggNDYuNDE0MDYzIDM3LjA2NjQwNiA0Ny44NzUgMzQuNSBDIDQ3Ljk2MDkzOCAzNC4zNDc2NTYgNDguMDAzOTA2IDM0LjE3NTc4MSA0OCAzNCBDIDQ4IDI5LjA1ODU5NCA0Ni45NDkyMTkgMjMuODA4NTk0IDQ1LjY1NjI1IDE5LjUzMTI1IEMgNDUuMDA3ODEzIDE3LjM5NDUzMSA0NC4yOTY4NzUgMTUuNDg0Mzc1IDQzLjYyNSAxNCBDIDQyLjk1MzEyNSAxMi41MTU2MjUgNDIuNDEwMTU2IDExLjQ4MDQ2OSA0MS42ODc1IDEwLjgxMjUgQyA0MS42Njc5NjkgMTAuODAwNzgxIDQxLjY0NDUzMSAxMC43ODkwNjMgNDEuNjI1IDEwLjc4MTI1IEMgMzcuNDYwOTM4IDcuNDM3NSAzMS4wOTM3NSA3IDMxLjA5Mzc1IDcgQyAzMS4wMTk1MzEgNi45OTIxODggMzAuOTQ5MjE5IDYuOTkyMTg4IDMwLjg3NSA3IEMgMzAuNTI3MzQ0IDcuMDQ2ODc1IDMwLjIzNDM3NSA3LjI3MzQzOCAzMC4wOTM3NSA3LjU5Mzc1IEMgMzAuMDkzNzUgNy41OTM3NSAyOS43NTM5MDYgOC4zMzk4NDQgMjkuNTMxMjUgOS40MDYyNSBDIDI3LjU4MjAzMSA5LjA5Mzc1IDI1Ljk0MTQwNiA5IDI1IDkgQyAyNC4wNTg1OTQgOSAyMi40MTc5NjkgOS4wOTM3NSAyMC40Njg3NSA5LjQwNjI1IEMgMjAuMjQ2MDk0IDguMzM5ODQ0IDE5LjkwNjI1IDcuNTkzNzUgMTkuOTA2MjUgNy41OTM3NSBDIDE5LjczNDM3NSA3LjIwMzEyNSAxOS4zMzIwMzEgNi45NjQ4NDQgMTguOTA2MjUgNyBaIE0gMTguMjgxMjUgOS4xNTYyNSBDIDE4LjM1NTQ2OSA5LjM1OTM3NSAxOC40MDYyNSA5LjU1MDc4MSAxOC40Njg3NSA5Ljc4MTI1IEMgMTYuMjE0ODQ0IDEwLjMwNDY4OCAxMy43NDYwOTQgMTEuMTYwMTU2IDExLjQzNzUgMTIuNTkzNzUgQyAxMS4wNzQyMTkgMTIuNzQ2MDk0IDEwLjgzNTkzOCAxMy4wOTc2NTYgMTAuODI0MjE5IDEzLjQ5MjE4OCBDIDEwLjgxNjQwNiAxMy44ODI4MTMgMTEuMDM5MDYzIDE0LjI0NjA5NCAxMS4zOTA2MjUgMTQuNDE3OTY5IEMgMTEuNzQ2MDk0IDE0LjU4NTkzOCAxMi4xNjc5NjkgMTQuNTM1MTU2IDEyLjQ2ODc1IDE0LjI4MTI1IEMgMTcuMTAxNTYzIDExLjQxMDE1NiAyMi45OTYwOTQgMTEgMjUgMTEgQyAyNy4wMDM5MDYgMTEgMzIuODk4NDM4IDExLjQxMDE1NiAzNy41MzEyNSAxNC4yODEyNSBDIDM3LjgzMjAzMSAxNC41MzUxNTYgMzguMjUzOTA2IDE0LjU4NTkzOCAzOC42MDkzNzUgMTQuNDE3OTY5IEMgMzguOTYwOTM4IDE0LjI0NjA5NCAzOS4xODM1OTQgMTMuODgyODEzIDM5LjE3NTc4MSAxMy40OTIxODggQyAzOS4xNjQwNjMgMTMuMDk3NjU2IDM4LjkyNTc4MSAxMi43NDYwOTQgMzguNTYyNSAxMi41OTM3NSBDIDM2LjI1MzkwNiAxMS4xNjAxNTYgMzMuNzg1MTU2IDEwLjMwNDY4OCAzMS41MzEyNSA5Ljc4MTI1IEMgMzEuNTkzNzUgOS41NTA3ODEgMzEuNjQ0NTMxIDkuMzU5Mzc1IDMxLjcxODc1IDkuMTU2MjUgQyAzMi44NTkzNzUgOS4yOTY4NzUgMzcuMjkyOTY5IDkuODk0NTMxIDQwLjMxMjUgMTIuMjgxMjUgQyA0MC41MDc4MTMgMTIuNDYwOTM4IDQxLjE4NzUgMTMuNDYwOTM4IDQxLjgxMjUgMTQuODQzNzUgQyA0Mi40Mzc1IDE2LjIyNjU2MyA0My4wOTM3NSAxOC4wMjczNDQgNDMuNzE4NzUgMjAuMDkzNzUgQyA0NC45Mzc1IDI0LjEyNSA0NS45MjE4NzUgMjkuMDk3NjU2IDQ1Ljk2ODc1IDMzLjY1NjI1IEMgNDQuODMyMDMxIDM1LjQ5NjA5NCA0Mi42OTkyMTkgMzYuODYzMjgxIDQwLjUgMzcuNzE4NzUgQyAzOC41IDM4LjQ5NjA5NCAzNi42MzI4MTMgMzguODQzNzUgMzUuNjU2MjUgMzguOTM3NSBMIDMzLjk2ODc1IDM2LjY1NjI1IEMgMzQuODI4MTI1IDM2LjM3ODkwNiAzNS42MDE1NjMgMzYuMDc4MTI1IDM2LjI4MTI1IDM1Ljc4MTI1IEMgMzguODA0Njg4IDM0LjY3MTg3NSA0MC4xNTYyNSAzMy41IDQwLjE1NjI1IDMzLjUgQyA0MC41NzAzMTMgMzMuMTI4OTA2IDQwLjYwNTQ2OSAzMi40OTIxODggNDAuMjM0Mzc1IDMyLjA3ODEyNSBDIDM5Ljg2MzI4MSAzMS42NjQwNjMgMzkuMjI2NTYzIDMxLjYyODkwNiAzOC44MTI1IDMyIEMgMzguODEyNSAzMiAzNy43NjU2MjUgMzIuOTU3MDMxIDM1LjQ2ODc1IDMzLjk2ODc1IEMgMzQuNjI1IDM0LjMzOTg0NCAzMy42MDE1NjMgMzQuNzA3MDMxIDMyLjQzNzUgMzUuMDMxMjUgQyAzMi4xNjc5NjkgMzUgMzEuODk4NDM4IDM1LjA3ODEyNSAzMS42ODc1IDM1LjI1IEMgMjkuODI0MjE5IDM1LjcwMzEyNSAyNy42MDkzNzUgMzYgMjUgMzYgQyAyMi4zNzEwOTQgMzYgMjAuMTUyMzQ0IDM1LjY3NTc4MSAxOC4yODEyNSAzNS4yMTg3NSBDIDE4LjA3MDMxMyAzNS4wNzgxMjUgMTcuODEyNSAzNS4wMTk1MzEgMTcuNTYyNSAzNS4wNjI1IEMgMTYuMzk0NTMxIDM0LjczODI4MSAxNS4zNzg5MDYgMzQuMzM5ODQ0IDE0LjUzMTI1IDMzLjk2ODc1IEMgMTIuMjM0Mzc1IDMyLjk1NzAzMSAxMS4xODc1IDMyIDExLjE4NzUgMzIgQyAxMC45NjA5MzggMzEuNzg5MDYzIDEwLjY0ODQzOCAzMS42OTkyMTkgMTAuMzQzNzUgMzEuNzUgQyA5Ljk1NzAzMSAzMS44MDg1OTQgOS42MzY3MTkgMzIuMDg1OTM4IDkuNTMxMjUgMzIuNDY0ODQ0IEMgOS40MjE4NzUgMzIuODM5ODQ0IDkuNTQ2ODc1IDMzLjI0NjA5NCA5Ljg0Mzc1IDMzLjUgQyA5Ljg0Mzc1IDMzLjUgMTEuMTk1MzEzIDM0LjY3MTg3NSAxMy43MTg3NSAzNS43ODEyNSBDIDE0LjM5ODQzOCAzNi4wNzgxMjUgMTUuMTcxODc1IDM2LjM3ODkwNiAxNi4wMzEyNSAzNi42NTYyNSBMIDE0LjM0Mzc1IDM4LjkzNzUgQyAxMy4zNjcxODggMzguODQzNzUgMTEuNSAzOC40OTYwOTQgOS41IDM3LjcxODc1IEMgNy4zMDA3ODEgMzYuODYzMjgxIDUuMTY3OTY5IDM1LjQ5NjA5NCA0LjAzMTI1IDMzLjY1NjI1IEMgNC4wNzgxMjUgMjkuMDk3NjU2IDUuMDYyNSAyNC4xMjUgNi4yODEyNSAyMC4wOTM3NSBDIDYuOTA2MjUgMTguMDI3MzQ0IDcuNTYyNSAxNi4yMjY1NjMgOC4xODc1IDE0Ljg0Mzc1IEMgOC44MTI1IDEzLjQ2MDkzOCA5LjQ5MjE4OCAxMi40NjA5MzggOS42ODc1IDEyLjI4MTI1IEMgMTIuNzA3MDMxIDkuODk0NTMxIDE3LjE0MDYyNSA5LjI5Njg3NSAxOC4yODEyNSA5LjE1NjI1IFogTSAxOC41IDIxIEMgMTUuOTQ5MjE5IDIxIDE0IDIzLjMxNjQwNiAxNCAyNiBDIDE0IDI4LjY4MzU5NCAxNS45NDkyMTkgMzEgMTguNSAzMSBDIDIxLjA1MDc4MSAzMSAyMyAyOC42ODM1OTQgMjMgMjYgQyAyMyAyMy4zMTY0MDYgMjEuMDUwNzgxIDIxIDE4LjUgMjEgWiBNIDMxLjUgMjEgQyAyOC45NDkyMTkgMjEgMjcgMjMuMzE2NDA2IDI3IDI2IEMgMjcgMjguNjgzNTk0IDI4Ljk0OTIxOSAzMSAzMS41IDMxIEMgMzQuMDUwNzgxIDMxIDM2IDI4LjY4MzU5NCAzNiAyNiBDIDM2IDIzLjMxNjQwNiAzNC4wNTA3ODEgMjEgMzEuNSAyMSBaIE0gMTguNSAyMyBDIDE5LjgxNjQwNiAyMyAyMSAyNC4yNjU2MjUgMjEgMjYgQyAyMSAyNy43MzQzNzUgMTkuODE2NDA2IDI5IDE4LjUgMjkgQyAxNy4xODM1OTQgMjkgMTYgMjcuNzM0Mzc1IDE2IDI2IEMgMTYgMjQuMjY1NjI1IDE3LjE4MzU5NCAyMyAxOC41IDIzIFogTSAzMS41IDIzIEMgMzIuODE2NDA2IDIzIDM0IDI0LjI2NTYyNSAzNCAyNiBDIDM0IDI3LjczNDM3NSAzMi44MTY0MDYgMjkgMzEuNSAyOSBDIDMwLjE4MzU5NCAyOSAyOSAyNy43MzQzNzUgMjkgMjYgQyAyOSAyNC4yNjU2MjUgMzAuMTgzNTk0IDIzIDMxLjUgMjMgWiIvPjwvc3ZnPg==" />,
+                    username: "aditribhatnagar",
+                    link: "https://discord.com/users/1164207779838447717",
+                    target: "_blank"
+                }
+            ],
+            desc: "I’m someone who loves blending curiosity with creativity — whether it’s decoding biology, exploring graphics, or bringing new ideas to life. For me, being part of Alphabit is about creating experiences that inspire and connect people. I believe in learning by doing, experimenting without fear, and always keeping a spark of fun in the process.",
+            role: "Department Head - Creative",
+            profile_pic: "https://i.ibb.co/0y9xdDCL/IMG-20250915-WA0011-1.jpg"
 
         },
 
     ]
-    return (
-        <div className='pt-[10vh]'>
-            <h1 className='text-center font-extrabold text-[3rem] tracking-[0.1em] to-75% via-20% from-blue-400 via-blue-500 to-purple-600 bg-gradient-to-r bg-clip-text text-transparent'>Our Team</h1>
-            <p className='text-center text-[1.1rem] mt-3'>Meet the passionate individuals behind Alphabit Tech Festival, working tirelessly to <br /> create an unforgettable experience for the tech community.</p>
+    const vantaRef = useRef(null)
+    const [vantaEffect, setVantaEffect] = useState(null)
 
-            <div className='px-16 pt-4 flex gap-3'>
-                {Array.isArray(team) && team.map((team) => {
-                    return (
-                        <div className="card w-[25rem] h-auto border-2 border-gray-800 rounded-2xl bg-gray-800/30 mt-3 scale-[0.9]" key={team.name}>
-                            <div className="img "> <Image src={team.profile_pic} width={400} height={50} alt='img' className='rounded-t-2xl' /></div>
-                            <div className="body p-3">
-                                <div className="heading font-bold text-2xl">{team.name}</div>
-                                <div className="desc text-[0.95rem] mb-5 mt-5">{team.desc}</div>
-                                {Array.isArray(team.social_handles) && team.social_handles.map((social_handles) => {
-                                    return (
-                                        <div className="date flex mb-3 gap-2 text-gray-300 text-[0.95rem]" key={social_handles.name}>{social_handles.icon} <Link href={social_handles.link} target={social_handles.target} className='text-blue-300 hover:text-blue-500 hover:underline'>{social_handles.username} </Link></div>
-                                    )
-                                })}
+    useEffect(() => {
+        if (!vantaEffect && vantaRef.current) {
+            setVantaEffect(
+                NET({
+                    el: vantaRef.current, // 👈 important: must be a real DOM node
+                    THREE: THREE,
+                    mouseControls: true,
+                    touchControls: true,
+                    gyroControls: true,
+                    minHeight: 200.0,
+                    minWidth: 200.0,
+                    scale: 1.0,
+                    scaleMobile: 1.0,
+                    color: 0x732ed,          // blue (Tailwind blue-500)
+                    backgroundAlpha: 0.0,     // makes the background transparent (use if you want page bg to show)
+                    points: 8.0,             // number of points (lower → fewer lines, cleaner)
+                    maxDistance: 20.0,        // max line length
+                    spacing: 18.0,
+                })
+            )
+        }
+
+        return () => {
+            if (vantaEffect) vantaEffect.destroy()
+        }
+    }, [vantaEffect])
+
+    return (
+        <div className='pt-[10vh]' ref={vantaRef}>
+            <div className="absolute inset-0 bg-black/60 blur-3xl"></div>
+            <div className='z-[1]'>
+                <h1 className='text-center font-extrabold text-[3rem] tracking-[0.1em] to-75% via-20% from-blue-400 via-blue-500 to-purple-600 bg-gradient-to-r bg-clip-text text-transparent'>Our Team</h1>
+                <p className='text-center text-[1.1rem] mt-3'>Meet the passionate individuals behind Alphabit Tech Festival, working tirelessly to <br /> create an unforgettable experience for the tech community.</p>
+
+                <div className='px-16 pt-4 flex gap-3'>
+                    {Array.isArray(team) && team.map((team) => {
+                        return (
+                            <div className="card w-[25rem] h-auto border-2 border-gray-800 rounded-2xl bg-gray-800/80 mt-3 scale-[0.9]" key={team.name}>
+                                <div className="img "> <Image src={team.profile_pic} width={400} height={50} alt='img' className='rounded-t-2xl' /></div>
+                                <div className="body p-3">
+                                    <div className="heading font-bold text-2xl">{team.name}</div>
+                                    <div className="desc text-[0.95rem] mb-5 mt-5">{team.desc}</div>
+                                    {Array.isArray(team.social_handles) && team.social_handles.map((social_handles) => {
+                                        return (
+                                            <div className="date flex mb-3 gap-2 text-gray-300 text-[0.95rem]" key={social_handles.name}>{social_handles.icon} <Link href={social_handles.link} target={social_handles.target} className='text-blue-300 hover:text-blue-500 hover:underline'>{social_handles.username} </Link></div>
+                                        )
+                                    })}
+                                </div>
+                                <p className='bg-black text-center h-10 rounded-b-2xl pt-[0.5rem] text-lg font-bold'>{team.role}</p>
                             </div>
-                            <p className='bg-black text-center h-10 rounded-b-2xl pt-[0.5rem] text-lg font-bold'>{team.role}</p>
-                        </div>
-                    )
-                })}
+                        )
+                    })}
+                </div>
             </div>
         </div>
     )
