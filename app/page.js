@@ -5,17 +5,19 @@ import Image from "next/image"
 import { Mail, Phone, MapPinHouse } from 'lucide-react';
 import { useUser } from '@clerk/nextjs'
 import Typewriter from 'typewriter-effect';
+import { useRouter } from 'next/navigation';
 
 
 const Page = () => {
   const { user, isLoaded } = useUser()
-  const eventDate = new Date("2025-11-14T09:00:00").getTime();
+  const eventDate = new Date("2025-11-12T09:00:00").getTime();
   const [month, setMonth] = useState()
   const [days, setDays] = useState()
   const [hours, setHours] = useState()
   const [minutes, setMinutes] = useState()
   const [seconds, setSeconds] = useState()
   const [isfetching, setisfetching] = useState(true)
+  const router = useRouter()
 
   const fetchdata = async () => {
     if (isLoaded && isfetching) {
@@ -81,7 +83,7 @@ const Page = () => {
             }}
           /></h1>
           <h2 className='font-extrabold text-2xl'>Amity Saket Presents Tech Fest 2025</h2>
-          <p className='text-gray-300 mt-4 font-bold'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, laboriosam enim? Beatae atque explicabo, <br /> temporibus blanditiis saepe ipsum sit nisi deserunt. Vel culpa omnis perspiciatis eligendi ducimus dolore sapiente fugiat?</p>
+          <p className='text-gray-300 mt-4 font-bold w-3xl justify-self-center'>Alphabit is being organized since 2013 with the objective to provide young students with a platform to exchange ideas and explore new avenues of knowledge in the field of technology.</p>
           <div className="timing flex gap-3 w-full justify-center mt-10">
             <div className='bg-gray-800 h-24 w-28 rounded-2xl text-white hover:scale-[1.1] transition-all ease-in'>
               <p className='text-3xl font-bold mt-4'>{month}</p>
@@ -104,8 +106,9 @@ const Page = () => {
               <p className='mt-2 text-sm text-gray-300'>Seconds</p>
             </div>
           </div>
+          <p className='font-bold pt-8 text-xl'>Join us on 12 November, 2025 @ 8:30am</p>
+          <button className='to-75% via-20% from-blue-700 via-blue-600 to-purple-800 bg-gradient-to-r text-xl font-bold mt-12 p-3 rounded-3xl w-48 h-15 cursor-pointer hover:from-blue-900 hover:via-blue-800 hover:to-purple-900' onClick={() => { router.push("/sign-up") }}>Register Now</button>
 
-          <button className='to-75% via-20% from-blue-700 via-blue-600 to-purple-800 bg-gradient-to-r text-xl font-bold mt-16 p-3 rounded-3xl w-48 h-15 cursor-pointer hover:from-blue-900 hover:via-blue-800 hover:to-purple-900'>Register Now</button>
         </div>
 
         <div className='contact h-[100vh] pt-[10vh]'>

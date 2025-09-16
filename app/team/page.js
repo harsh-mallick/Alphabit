@@ -34,7 +34,8 @@ const Page = () => {
                 }
             ],
             desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate cumque exercitationem, minus obcaecati aut ex odit, nemo excepturi ratione quisquam quidem nihil rerum harum recusandae ipsam? Provident quaerat hic aperiam.",
-            profile_pic: ""
+            profile_pic: "https://i.ibb.co/vC9tncwF/Whats-App-Image-2025-09-16-at-20-16-20-b9d3bc16.jpg",
+            role: "Overall Student Incharge"
 
         },
         {
@@ -137,7 +138,7 @@ const Page = () => {
                 <h1 className='text-center font-extrabold text-[3rem] tracking-[0.1em] to-75% via-20% from-blue-400 via-blue-500 to-purple-600 bg-gradient-to-r bg-clip-text text-transparent'>Our Team</h1>
                 <p className='text-center text-[1.1rem] mt-3'>Meet the passionate individuals behind Alphabit Tech Festival, working tirelessly to <br /> create an unforgettable experience for the tech community.</p>
 
-                <div className='px-16 pt-4 flex gap-3'>
+                <div className='px-16 pt-4 flex gap-3 justify-self-center'>
                     {Array.isArray(team) && team.map((team) => {
                         return (
                             <div className="card w-[25rem] h-auto border-2 border-gray-800 rounded-2xl bg-gray-800/80 mt-3 scale-[0.9] grid" key={team.name}>
