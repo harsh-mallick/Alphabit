@@ -33,8 +33,7 @@ const Page = () => {
                     target: "_blank"
                 }
             ],
-            desc: "I’m Harsh Mallick, and I have a passion for all things digital. From full-stack web development to 3D design, I love building virtual worlds that merge creativity with tech. In my free time, I dive into the latest AI releases, always curious about how new tools can be woven into projects. For me, Alphabit is like a canvas to experiment, innovate, and share ideas that spark inspiration in the tech community.",
-            role: "Overall Student Incharge",
+            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate cumque exercitationem, minus obcaecati aut ex odit, nemo excepturi ratione quisquam quidem nihil rerum harum recusandae ipsam? Provident quaerat hic aperiam.",
             profile_pic: ""
 
         },
@@ -63,9 +62,10 @@ const Page = () => {
                     target: "_blank"
                 }
             ],
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate cumque exercitationem, minus obcaecati aut ex odit, nemo excepturi ratione quisquam quidem nihil rerum harum recusandae ipsam? Provident quaerat hic aperiam.",
+            desc: "I’m Harsh Mallick, and I have a passion for all things digital. From full-stack web development to 3D design, I love building virtual worlds that merge creativity with tech. In my free time, I dive into the latest AI releases, always curious about how new tools can be woven into projects. For me, Alphabit is like a canvas to experiment, innovate, and share ideas that spark inspiration in the tech community.",
             role: "Overall Student Incharge",
             profile_pic: "https://i.ibb.co/LDfTmQys/Me.png"
+            // profile_pic: "https://i.ibb.co/LdzwMhbp/Whats-App-Image-2025-09-15-at-14-39-22-7922f532.jpg"
 
         },
         {
@@ -140,7 +140,7 @@ const Page = () => {
                 <div className='px-16 pt-4 flex gap-3'>
                     {Array.isArray(team) && team.map((team) => {
                         return (
-                            <div className="card w-[25rem] h-auto border-2 border-gray-800 rounded-2xl bg-gray-800/80 mt-3 scale-[0.9]" key={team.name}>
+                            <div className="card w-[25rem] h-auto border-2 border-gray-800 rounded-2xl bg-gray-800/80 mt-3 scale-[0.9] grid" key={team.name}>
                                 <div className="img "> <Image src={team.profile_pic} width={400} height={50} alt='img' className='rounded-t-2xl' /></div>
                                 <div className="body p-3">
                                     <div className="heading font-bold text-2xl">{team.name}</div>
@@ -151,7 +151,7 @@ const Page = () => {
                                         )
                                     })}
                                 </div>
-                                <p className='bg-black text-center h-10 rounded-b-2xl pt-[0.5rem] text-lg font-bold'>{team.role}</p>
+                                <p className='bg-black text-center h-10 rounded-b-2xl pt-[0.5rem] text-lg font-bold self-end'>{team.role}</p>
                             </div>
                         )
                     })}

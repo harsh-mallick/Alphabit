@@ -4,11 +4,12 @@ import logo from "./Image/alphabit.png"
 import Image from "next/image"
 import { Mail, Phone, MapPinHouse } from 'lucide-react';
 import { useUser } from '@clerk/nextjs'
+import Typewriter from 'typewriter-effect';
 
 
 const Page = () => {
   const { user, isLoaded } = useUser()
-  const eventDate = new Date("2025-09-15T09:00:00").getTime();
+  const eventDate = new Date("2025-11-14T09:00:00").getTime();
   const [month, setMonth] = useState()
   const [days, setDays] = useState()
   const [hours, setHours] = useState()
@@ -33,12 +34,13 @@ const Page = () => {
           localStorage.setItem("teacher_incharge", data.data.name)
           localStorage.setItem("teacher_incharge_clerkID", data.data.clerkID)
           localStorage.setItem("school_name", data.data.school_name)
+          setisfetching(false)
+        } else {
+          setisfetching(false)
         }
-
-        setisfetching(false)
-
       } catch (error) {
         console.error("Error fetching profile:", error);
+        setisfetching(false)
       }
     }
   };
@@ -71,7 +73,13 @@ const Page = () => {
       <div className='z-[1] relative'>
         <div className="home text-center h-[100vh] pt-[10vh]">
           <div className='w-full flex justify-center'><div className="logo w-24 border-2 border-transparent rounded-full"><Image src={logo} alt="abc" width={0} height={0} /></div></div>
-          <h1 className='text-center font-extrabold text-[4rem] tracking-[0.1em] to-75% via-20% from-blue-400 via-blue-500 to-pink-400 bg-gradient-to-r bg-clip-text text-transparent font_audiowide'>Alphabit</h1>
+          <h1 className='text-center font-extrabold text-[4rem] tracking-[0.1em] to-75% via-20% from-blue-400 via-blue-500 to-pink-400 bg-gradient-to-r bg-clip-text text-transparent font_audiowide'><Typewriter
+            options={{
+              strings: ['Alphabit'],
+              autoStart: true,
+              loop: true,
+            }}
+          /></h1>
           <h2 className='font-extrabold text-2xl'>Amity Saket Presents Tech Fest 2025</h2>
           <p className='text-gray-300 mt-4 font-bold'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, laboriosam enim? Beatae atque explicabo, <br /> temporibus blanditiis saepe ipsum sit nisi deserunt. Vel culpa omnis perspiciatis eligendi ducimus dolore sapiente fugiat?</p>
           <div className="timing flex gap-3 w-full justify-center mt-10">
