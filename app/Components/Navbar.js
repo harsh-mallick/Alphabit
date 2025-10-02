@@ -1,12 +1,22 @@
 "use client"
-import React from 'react'
-import { House, Calendar, UsersRound, Clock, LogOut, User, UserPlus } from 'lucide-react';
+import React, { useState, useEffect } from 'react'
+import { House, Calendar, UsersRound, Clock, LogOut, User, UserPlus, ScrollText } from 'lucide-react';
 import logo from "../Image/alphabit.png"
 import Image from "next/image"
 import Link from 'next/link';
 import { SignedIn, SignedOut, SignInButton, SignOutButton, SignUpButton, UserButton } from '@clerk/nextjs';
+import { useUser } from "@clerk/nextjs"
 
 const Navbar = () => {
+    const [role, setRole] = useState("")
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const storedRole = window.localStorage.getItem("role");
+            if (storedRole) setRole(storedRole);
+        }
+    }, []);
+
     const nav_items = [
         {
             icon: <House />,
@@ -29,6 +39,7 @@ const Navbar = () => {
             link: "/timeline"
         },
     ]
+    console.log("role")
     return (
         <div className='h-[10vh] flex w-screen px-5 py-3 items-center bg-[rgba(43, 49, 64, 0.47)] backdrop-blur-xl z-[3] fixed'>
             <div className="left flex justify-center w-1/5 gap-3">
@@ -69,10 +80,15 @@ const Navbar = () => {
                         <div className="icon"><User /></div>
                         <div className="text">Profile</div>
                     </Link>
-                    <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white" href="/add-student">
-                        <div className="icon"><UserPlus /></div>
-                        <div className="text">Add Student</div>
-                    </Link>
+                    {role == "admin" ? <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white" href="/list-student">
+                        <div className="icon"><ScrollText /></div>
+                        <div className="text">Student List</div>
+                    </Link> :
+                        <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white" href="/add-student">
+                            <div className="icon"><UserPlus /></div>
+                            <div className="text">Add Student</div>
+                        </Link>
+                    }
                     <SignOutButton className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white mr-5"><LogOut /></SignOutButton>
                 </div>
             </SignedIn>

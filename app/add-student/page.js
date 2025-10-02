@@ -44,7 +44,8 @@ const Page = () => {
         class_: "",
         email: "",
         competition_category: "",
-        phonenumber: ""
+        phonenumber: "",
+        uuid: ""
     })
     const add_student = async () => {
         const response = await fetch("/api/add-student", {
@@ -53,7 +54,7 @@ const Page = () => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                student_reg, teacher_incharge: `${localStorage.getItem("teacher_incharge")}`, teacher_incharge_clerkID: `${localStorage.getItem("teacher_incharge_clerkID")}`, school_name: `${localStorage.getItem("school_name")}`
+                student_reg, uuid: crypto.randomUUID(), teacher_incharge: `${localStorage.getItem("teacher_incharge")}`, teacher_incharge_clerkID: `${localStorage.getItem("teacher_incharge_clerkID")}`, school_name: `${localStorage.getItem("school_name")}`
             })
         })
         const data = await response.json()
@@ -63,6 +64,30 @@ const Page = () => {
         } else {
             window.alert(data.message)
             window.location.reload()
+        }
+    }
+    const remove_student = async (student_uuid) => {
+        const confirm = window.confirm("Are you sure you want to remove the student?")
+        if (confirm == true) {
+            const response = await fetch("/api/delete-student", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    uuid: student_uuid
+                })
+            })
+            const data = await response.json()
+            // console.log(data)
+            if (data.status_code === 500) {
+                window.alert(data.message)
+            } else {
+                window.alert(data.message)
+                window.location.reload()
+            }
+        } else {
+
         }
     }
     return (
@@ -86,7 +111,7 @@ const Page = () => {
                                 <td className='border-gray-400 px-2 border-2 py-1'>{student.email}</td>
                                 <td className='border-gray-400 px-2 border-2 py-1'>{student.phonenumber}</td>
                                 <td className='border-gray-400 px-2 border-2 py-1'>{student.competition_category}</td>
-                                <td className='border-gray-400 px-2 border-2 py-1 text-center'><Trash2 className='text-red-700 text-center cursor-pointer' /></td>
+                                <td className='border-gray-400 px-2 border-2 py-1 text-center'><Trash2 className='text-red-700 text-center cursor-pointer' onClick={() => remove_student(student.uuid)} /></td>
                             </tr>
                         )
                     })}
@@ -116,7 +141,7 @@ const Page = () => {
                         <div className='mt-2'>
                             <Select className="" onValueChange={(value) => setstudent_reg({ ...student_reg, competition_category: value })}>
                                 <SelectTrigger className="border-2 border-gray-300 p-2 rounded-md bg-gray-800/50 w-[22rem] focus:outline-none">
-                                    <SelectValue placeholder="Select your field of interest" />
+                                    <SelectValue placeholder="Select competiton category" />
                                 </SelectTrigger>
                                 <SelectContent className="text-white bg-gray-800/85 w-[22rem]">
                                     <SelectItem value="Cretica" className="hover:bg-gray-900/90">Cretica</SelectItem>
@@ -126,7 +151,7 @@ const Page = () => {
                                 </SelectContent>
                             </Select>
                         </div>
-                        <button className='to-75% via-20% from-blue-700 via-blue-600 to-purple-800 bg-gradient-to-r text-lg font-bold mt-7 rounded-md w-full h-12 cursor-pointer hover:from-blue-900 hover:via-blue-800 hover:to-purple-900' onClick={add_student}>Send Message</button>
+                        <button className='to-75% via-20% from-blue-700 via-blue-600 to-purple-800 bg-gradient-to-r text-lg font-bold mt-7 rounded-md w-full h-12 cursor-pointer hover:from-blue-900 hover:via-blue-800 hover:to-purple-900' onClick={add_student}>Add Student</button>
                     </div>
                 </div>
             </div>

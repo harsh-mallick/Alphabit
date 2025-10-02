@@ -11,6 +11,7 @@ export async function POST(req) {
         const teacher_incharge = body.teacher_incharge
         const teacher_incharge_clerkID = body.teacher_incharge_clerkID
         const school_name = body.school_name
+        const uuid = body.uuid
         const add_student = new StudentPage({
             name, class_, school_name, teacher_incharge, teacher_incharge_clerkID, competition_category, email, phonenumber
         })

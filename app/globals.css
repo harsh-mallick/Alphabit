@@ -30,3 +30,152 @@ body {
   overflow: none;
   object-fit: cover;
 }
+
+/* Custom styles for the arrow/line effect */
+.timeline-line {
+  width: 6px;
+  /* Slightly wider */
+  /* Darker center with bright purple and blue edges */
+  background-image: linear-gradient(to bottom, #7c3aed, #0a0a0a, #3b82f6);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+  border-radius: 3px;
+  /* Softens the edges */
+  /* Add a subtle external shadow/glow */
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+/* Keyframe for energetic arrow pulsing and displacement */
+@keyframes arrow-pulse-shift {
+  0% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(4px);
+    /* Pushes down further */
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Updated Timeline Arrow: Layered Crystal Chevron */
+.timeline-arrow {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+
+  /* Slightly Larger Chevron Base */
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+
+  /* Create the look of a transparent, glowing tip */
+  border-top: 12px solid rgba(56, 189, 248, 0.4);
+  /* Translucent Neon Blue */
+
+  z-index: 10;
+
+  /* Layered Shadow for a Crystal/Glass Glow */
+  box-shadow:
+    /* Outer sharp blue glow */
+    0 4px 15px rgba(56, 189, 248, 1),
+    /* Soft purple aura */
+    0 4px 25px rgba(147, 51, 234, 0.5),
+    /* Inner shadow to make the chevron appear to hold the liquid light */
+    inset 0 4px 10px rgba(56, 189, 248, 0.8);
+
+  /* Animation: Energetic Pulse and Shift */
+  animation: arrow-pulse-shift 1.5s infinite ease-in-out;
+}
+
+/* Responsive adjustments for left/right alignment */
+@media (min-width: 768px) {
+  .left-event {
+    justify-content: flex-end;
+  }
+
+  .right-event {
+    justify-content: flex-start;
+  }
+}
+
+.tech-glow-purple:hover {
+  /* Subtle inner shadow mimicking a glow */
+  box-shadow: inset 0 0 15px rgba(124, 58, 237, 0.5), 0 0 15px rgba(124, 58, 237, 0.3);
+}
+
+.tech-glow-blue:hover {
+  /* Subtle inner shadow mimicking a glow */
+  box-shadow: inset 0 0 15px rgba(59, 130, 246, 0.5), 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+/* Keyframe for the dynamic energy flow animation */
+@keyframes energy-flow {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+/* Updated Timeline Line: Neon Flow Channel */
+.timeline-line {
+  width: 10px;
+  /* Slightly wider to contain the glow */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+  border-radius: 5px;
+  /* Smoother edges */
+
+  /* Base style: Dark background for the 'channel' effect */
+  background-color: #111111;
+  /* Even darker base */
+
+  /* Layered Gradient for the Flow: Using more vivid, neon colors */
+  background-image: linear-gradient(to bottom,
+      /* Repeating pattern of dark gaps and glowing segments */
+      transparent 0%,
+      transparent 25%,
+      #33ea33 30%,
+      /* Neon Violet (for the Purple) */
+      #21841f 35%,
+      /* Neon Sky Blue (for the Blue) */
+      transparent 40%,
+      transparent 100%);
+
+  background-size: 100% 500px;
+  /* Shorter segments for faster visual repetition */
+
+  /* Animation: Slower speed for a weighty, substantial flow */
+  animation: energy-flow 10s linear infinite;
+
+  /* Layered Box Shadow for Maximum Glow and Depth */
+  box-shadow:
+    /* Soft, wide glow for the aura */
+    0 0 15px rgba(56, 189, 248, 0.8),
+    /* Strong Blue Haze */
+    0 0 25px rgba(147, 51, 234, 0.5),
+    /* Faint Purple Aura */
+    /* Inner shadow to give the channel depth */
+    inset 0 0 10px rgba(56, 189, 248, 0.4);
+
+  border: 1px solid rgba(147, 51, 234, 0.3);
+  /* Subtle, glowing border */
+}
