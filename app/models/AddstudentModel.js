@@ -33,6 +33,10 @@ const StudentSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    uuid: {
+        type: String,
+        required: true
+    },
 })
 
 const StudentPage = mongoose.models.StudentPage || mongoose.model("StudentPage", StudentSchema)

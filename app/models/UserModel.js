@@ -17,10 +17,6 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    uuid: {
-        type: String,
-        required: true
-    },
     role: {
         type: String,
         default: "Teacher Incharge"

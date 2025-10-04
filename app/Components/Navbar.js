@@ -6,10 +6,11 @@ import Image from "next/image"
 import Link from 'next/link';
 import { SignedIn, SignedOut, SignInButton, SignOutButton, SignUpButton, UserButton } from '@clerk/nextjs';
 import { useUser } from "@clerk/nextjs"
+import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
     const [role, setRole] = useState("")
-
+    const router = useRouter()
     useEffect(() => {
         if (typeof window !== "undefined") {
             const storedRole = window.localStorage.getItem("role");
@@ -43,8 +44,10 @@ const Navbar = () => {
     return (
         <div className='h-[10vh] flex w-screen px-5 py-3 items-center bg-[rgba(43, 49, 64, 0.47)] backdrop-blur-xl z-[3] fixed'>
             <div className="left flex justify-center w-1/5 gap-3">
-                <div className="logo"><Image src={logo} alt="abc" width={30} height={30} /></div>
-                <div className="title font-bold text-2xl">Alphabit</div>
+                <div onClick={() => router.push('/')} className='flex gap-3 cursor-pointer'>
+                    <div className="logo"><Image src={logo} alt="abc" width={30} height={30} /></div>
+                    <div className="title font-bold text-2xl">Alphabit</div>
+                </div>
             </div>
             <SignedOut>
                 <div className="right flex justify-end w-4/5 gap-9 items-center">

@@ -142,9 +142,8 @@ const Page = () => {
               <div className="right w-1/2">
                 <div className="top border-1 border-gray-600 rounded-md h-[14rem] py-6 px-9 bg-gray-600/25">
                   <p className='font-bold text-xl mb-4' >Contact Information</p>
-                  <div className='flex gap-3 items-center mt-2'><p className='text-blue-800'><Mail className='h-5' /></p><p>info@email.com</p></div>
-                  <div className='flex gap-3 items-center mt-2'><p className='text-blue-800'><Phone className='h-5' /></p><p>80xxxxxxxx</p></div>
-                  <div className='flex gap-3 items-center mt-2'><p className='text-blue-800'><MapPinHouse className='h-5' /></p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod aut </p></div>
+                  <div className='flex gap-3 items-center mt-2'><p className='text-blue-800'><Mail className='h-5' /></p><p>harshmallick052009@gmail.com</p></div>
+                  <div className='flex gap-3 items-center mt-2'><p className='text-blue-800'><MapPinHouse className='h-5' /></p><p>M Block, No:44, Saket Rd, Block N, Saket, New Delhi, Delhi 110017, India</p></div>
                 </div>
                 <div className="bottom border-1 border-gray-600 rounded-md h-[18.27rem] py-6 px-9 bg-gray-600/25 mt-7">
                   <iframe width="100%" height="100%" loading="lazy" className="inset-0 rounded-md" frameBorder="0" title="map" marginHeight="0" marginWidth="0" scrolling="no" src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=Amity%20Saket+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed"></iframe>

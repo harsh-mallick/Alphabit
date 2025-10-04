@@ -45,7 +45,6 @@ const Page = () => {
         email: "",
         competition_category: "",
         phonenumber: "",
-        uuid: ""
     })
     const add_student = async () => {
         const response = await fetch("/api/add-student", {
@@ -54,7 +53,7 @@ const Page = () => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                student_reg, uuid: crypto.randomUUID(), teacher_incharge: `${localStorage.getItem("teacher_incharge")}`, teacher_incharge_clerkID: `${localStorage.getItem("teacher_incharge_clerkID")}`, school_name: `${localStorage.getItem("school_name")}`
+                student_reg, uuid: `${crypto.randomUUID()}`, teacher_incharge: `${localStorage.getItem("teacher_incharge")}`, teacher_incharge_clerkID: `${localStorage.getItem("teacher_incharge_clerkID")}`, school_name: `${localStorage.getItem("school_name")}`
             })
         })
         const data = await response.json()
@@ -66,7 +65,8 @@ const Page = () => {
             window.location.reload()
         }
     }
-    const remove_student = async (student_uuid) => {
+    const remove_student = async (_id) => {
+        console.log(_id)
         const confirm = window.confirm("Are you sure you want to remove the student?")
         if (confirm == true) {
             const response = await fetch("/api/delete-student", {
@@ -75,7 +75,7 @@ const Page = () => {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    uuid: student_uuid
+                    _id: _id
                 })
             })
             const data = await response.json()
@@ -111,7 +111,7 @@ const Page = () => {
                                 <td className='border-gray-400 px-2 border-2 py-1'>{student.email}</td>
                                 <td className='border-gray-400 px-2 border-2 py-1'>{student.phonenumber}</td>
                                 <td className='border-gray-400 px-2 border-2 py-1'>{student.competition_category}</td>
-                                <td className='border-gray-400 px-2 border-2 py-1 text-center'><Trash2 className='text-red-700 text-center cursor-pointer' onClick={() => remove_student(student.uuid)} /></td>
+                                <td className='border-gray-400 px-2 border-2 py-1 text-center'><Trash2 className='text-red-700 text-center cursor-pointer' onClick={() => remove_student(student._id)} /></td>
                             </tr>
                         )
                     })}
