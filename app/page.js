@@ -87,7 +87,7 @@ const Page = () => {
   } else {
     return (
       <div className='pt-[10vh] '>
-        <video autoPlay loop muted playsInline aria-hidden="true" pointer-events-none className="absolute z-[0] sm:h-full h-[90rem] w-full top-0 left-0 object-cover" style={{ mixBlendMode: "color-dodge", opacity: '0.4' }}>
+        <video autoPlay loop muted playsInline aria-hidden="true" pointerEvents = "none" className="absolute z-[0] sm:h-full h-[90rem] w-full top-0 left-0 object-cover" style={{ mixBlendMode: "color-dodge", opacity: '0.4' }}>
           <source src="./circuit.mp4" />
         </video>
         <div className='z-[1] relative'>
