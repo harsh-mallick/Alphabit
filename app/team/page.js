@@ -171,9 +171,32 @@ const Page = () => {
                     target: "_blank"
                 }
             ],
-            desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio expedita soluta dicta dolorum quaerat, pariatur neque corrupti. Laudantium consectetur iste sunt fugit sed, accusantium nihil accusamus sapiente culpa consequatur eaque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio expedita.",
+            desc: "Hi! I’m Farhan Azam, someone who loves decoding problems and finding smart, creative fixes through code. Tech, for me, has always been about curiosity – understanding how things work and how they can work better. I enjoy challenges that push me to think logically and innovate fearlessly. AlphaBit, to me, is the perfect stage to bring together ideas, logic, and teamwork. Through this opportunity, I aim to create an environment where learning feels exciting, collaboration sparks innovation, and every problem turns into a chance to grow.",
             role: "Department Head - Programming",
-            profile_pic: "https://i.ibb.co/v41v6r2Q/Whats-App-Image-2025-10-03-at-17-18-21-b33db46d.jpg"
+            profile_pic: "https://i.ibb.co/xKcBMd5Z/IMG-20251005-WA0020-1.png"
+
+        },
+        {
+            name: "Tishya Bhalla ",
+            social_handles: [
+                {
+                    name: "Email",
+                    icon: <Mail />,
+                    username: "bhallatishya2008@gmail.com",
+                    link: "",
+                    target: "_self"
+                },
+                {
+                    name: "Linkedin",
+                    icon: <Linkedin className='text-[0.95]' />,
+                    username: "tishya-bhalla-bb4b5b36",
+                    link: "http://www.linkedin.com/in/tishya-bhalla-bb4b5b365",
+                    target: "_blank"
+                },
+            ],
+            desc: "Hi! I’m Tishya Bhalla, a tech enthusiast fueled by coffee and wild ideas. For me, coding isn’t just about logic – it’s about creativity, problem solving, and turning abstract thoughts into something real and impactful. Debugging, building, experimenting – that’s where I find my flow. Alphabit, to me, is a launchpad to connect with passionate minds, exchange ideas and collaborate. Through it, I hope to contribute to a community that celebrates innovation, curiosity and the art of building something extraordinary.",
+            role: "Department Head - Programming",
+            profile_pic: "https://i.ibb.co/pjxPpW1B/Whats-App-Image-2025-10-06-at-22-19-04-31347310.jpg"
 
         },
 
