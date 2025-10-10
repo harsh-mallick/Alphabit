@@ -83,10 +83,15 @@ const Navbar = () => {
                         <div className="icon"><User /></div>
                         <div className="text">Profile</div>
                     </Link>
-                    {role == "admin" ? <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white" href="/list-student">
+                    {role == "admin" ? <> <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white" href="/list-student">
                         <div className="icon"><ScrollText /></div>
                         <div className="text">Student List</div>
-                    </Link> :
+                    </Link>
+                        <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white" href="/school-list">
+                            <div className="icon"><ScrollText /></div>
+                            <div className="text">School List</div>
+                        </Link></>
+                        :
                         <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white" href="/add-student">
                             <div className="icon"><UserPlus /></div>
                             <div className="text">Add Student</div>
