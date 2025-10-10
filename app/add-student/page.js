@@ -10,7 +10,7 @@ import {
 import { useUser } from '@clerk/nextjs';
 
 import { Trash2 } from 'lucide-react';
-import Loading from "./Components/Loading"
+import Loading from "../Components/Loading"
 
 const Page = () => {
     const [isteacherfetching, setisteacherfetching] = useState(true)
