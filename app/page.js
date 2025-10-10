@@ -18,6 +18,30 @@ const Page = () => {
   const [seconds, setSeconds] = useState()
   const [isfetching, setisfetching] = useState(true)
   const router = useRouter()
+  const [doubtmessage, setmessage] = useState({
+    name: "",
+    email: "",
+    message: "",
+  })
+  const add_student = async () => {
+    const response = await fetch("/api/message", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        doubtmessage
+      })
+    })
+    const data = await response.json()
+    // console.log(data)
+    if (data.status_code === 500 || !data) {
+      console.log("Failed to send message")
+    } else {
+      window.alert(data.message)
+      window.location.reload()
+    }
+  }
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -87,7 +111,7 @@ const Page = () => {
   } else {
     return (
       <div className='pt-[10vh] '>
-        <video autoPlay loop muted playsInline aria-hidden="true" pointerEvents = "none" className="absolute z-[0] sm:h-full h-[90rem] w-full top-0 left-0 object-cover" style={{ mixBlendMode: "color-dodge", opacity: '0.4' }}>
+        <video autoPlay loop muted playsInline aria-hidden="true" pointerEvents="none" className="absolute z-[0] sm:h-full h-[90rem] w-full top-0 left-0 object-cover" style={{ mixBlendMode: "color-dodge", opacity: '0.4' }}>
           <source src="./circuit.mp4" />
         </video>
         <div className='z-[1] relative'>
@@ -134,10 +158,10 @@ const Page = () => {
             <div className='flex max-w-screen gap-10 px-[10rem] mt-5'>
               <div className="left w-[50%] border-1 border-gray-600 rounded-md h-[34rem] py-6 px-9 bg-gray-600/25">
                 <p className='font-bold text-xl mb-4'>Send us a Message</p>
-                <input type="text" name="name" id="name" placeholder='Your name' className='bg-slate-500/35 w-full h-10 p-2 rounded-md mb-4' /><br />
-                <input type="text" name="email" id="email" placeholder='Your email' className='bg-slate-500/35 w-full h-10 p-2 rounded-md mb-4' /><br />
-                <textarea name="message" id="message" placeholder='Your message' className='bg-slate-500/35 w-full min-h-32 p-2 rounded-md'></textarea><br />
-                <button className='to-75% via-20% from-blue-700 via-blue-600 to-purple-800 bg-gradient-to-r text-lg font-bold mt-7 rounded-md w-full h-12 cursor-pointer hover:from-blue-900 hover:via-blue-800 hover:to-purple-900'>Send Message</button>
+                <input type="text" name="name" id="name" placeholder='Your name' value={doubtmessage.name} onChange={(e) => setmessage({ ...doubtmessage, name: e.target.value })} className='bg-slate-500/35 w-full h-10 p-2 rounded-md mb-4' /><br />
+                <input type="text" name="email" id="email" placeholder='Your email' value={doubtmessage.email} onChange={(e) => setmessage({ ...doubtmessage, email: e.target.value })} className='bg-slate-500/35 w-full h-10 p-2 rounded-md mb-4' /><br />
+                <textarea name="message" id="message" placeholder='Your message' value={doubtmessage.message} onChange={(e) => setmessage({ ...doubtmessage, message: e.target.value })} className='bg-slate-500/35 w-full min-h-32 p-2 rounded-md'></textarea><br />
+                <button className='to-75% via-20% from-blue-700 via-blue-600 to-purple-800 bg-gradient-to-r text-lg font-bold mt-7 rounded-md w-full h-12 cursor-pointer hover:from-blue-900 hover:via-blue-800 hover:to-purple-900' onClick={add_student}>Send Message</button>
               </div>
               <div className="right w-1/2">
                 <div className="top border-1 border-gray-600 rounded-md h-[14rem] py-6 px-9 bg-gray-600/25">

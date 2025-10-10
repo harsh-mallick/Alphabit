@@ -30,7 +30,7 @@ const StudentSchema = mongoose.Schema({
         required: true
     },
     phonenumber: {
-        type: String,
+        type: Number,
         required: true
     },
     uuid: {
