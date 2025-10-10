@@ -18,7 +18,7 @@ const Page = () => {
     const [data, setdata] = useState(null)
     const { user, isLoaded } = useUser()
     const fetchstudentdata = async () => {
-        if (isstudentdata) {
+        if (isstudentfetching) {
             try {
                 const response = await fetch("/api/get-student", {
                     method: "POST",
@@ -128,7 +128,7 @@ const Page = () => {
 
         }
     }
-    if (isteacherfetching && isstudentdata) {
+    if (isteacherfetching && isstudentfetching) {
         return (
             <div className='z-[5]'>
                 <Loading />
