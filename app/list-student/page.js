@@ -70,6 +70,7 @@ const Page = () => {
                                 <td className='border-gray-400 px-2 border-2 py-1'>{student.phonenumber}</td>
                                 <td className='border-gray-400 px-2 border-2 py-1'>{student.competition_category}</td>
                                 <td className='border-gray-400 px-2 border-2 py-1'>{student.teacher_incharge}</td>
+                                <td className='border-gray-400 px-2 border-2 py-1'>{student.teacher_incharge_email}</td>
                                 {/* <td className='border-gray-400 px-2 border-2 py-1 text-center'><Trash2 className='text-red-700 text-center cursor-pointer' /></td> */}
                             </tr>
                         )

@@ -84,7 +84,7 @@ const Page = () => {
             await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
             setVerifying(true);
         } catch (error) {
-            console.log("Signup error: ", error);
+            console.log("Signup error: ", error.errors?.[0]?.message);
             setAuthError(error.errors?.[0]?.message);
         } finally {
             setIsSubmitting(false);
@@ -115,7 +115,7 @@ const Page = () => {
                     console.log("Failed to register user")
                 } else {
                     await setActive({ session: result.createdSessionId })
-                    router.push("/")
+                    router.push("/add-student")
                 }
 
             } else {
@@ -186,7 +186,7 @@ const Page = () => {
 
                             <Button
                                 type="submit"
-                                className="w-full"
+                                className="w-full cursor-pointer"
                                 disabled={isSubmitting || verificationCode.length !== 6}
                             >
                                 {isSubmitting ? (
@@ -389,7 +389,7 @@ const Page = () => {
                         </div>
                         {errors.passwordConfirmation && (<p className="text-red-500 text-sm">{errors.passwordConfirmation.message}</p>)}
                     </div>
-
+                    {authError && (<p className="text-red-500 text-sm">{authError}</p>)}
                     <Button
                         type="submit"
                         className="w-[25rem] cursor-pointer text-[1.3rem] self-center bg-[#21275b] hover:bg-[#343479]"
@@ -405,6 +405,7 @@ const Page = () => {
                             "Sign Up"
                         )}
                     </Button>
+
 
                     <p className="text-center text-sm text-muted-foreground">
                         Already have an account?{" "}

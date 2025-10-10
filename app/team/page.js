@@ -34,7 +34,7 @@ const Page = () => {
                     target: "_blank"
                 }
             ],
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate cumque exercitationem, minus obcaecati aut ex odit, nemo excepturi ratione quisquam quidem nihil rerum harum recusandae ipsam? Provident quaerat hic aperiam.",
+            desc: "Hello there! I’m Amatra! Currently navigating the chaos of academics with caffeine as my co-pilot and an endless curiosity about how everything, from equations to engines, works. I’ve always loved blending creativity with logic, whether it’s through writing, design, or leading projects that bring ideas to life. Outside the world of deadlines and events, you’ll usually find me geeking out over fighter jets, Star Wars, Formula 1 (yes, Norris deserves that WDC), or debating and diving into the wonders of astronomy and physics. For me, Alphabit isn’t just a fest; it’s where curiosity meets creation, and organized chaos turns into something extraordinary, which i will always look forward to!",
             profile_pic: "https://i.ibb.co/1GhM1Ys7/Whats-App-Image-2025-10-01-at-22-52-47-eff93df4.jpg",
             role: "Overall Student Incharge"
 
@@ -64,7 +64,7 @@ const Page = () => {
                     target: "_blank"
                 }
             ],
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate cumque exercitationem, minus obcaecati aut ex odit, nemo excepturi ratione quisquam quidem nihil rerum harum recusandae ipsam? Provident quaerat hic aperiam.",
+            desc: "Hello! I am Piyush Kumar Raj, a passionate game designer and developer. Whether I'm creating 3D environments in Blender, developing solar system models, or testing my own graphics engine in C++, I consistently have the same drive: the thrill of transforming concepts into real-world experiences. For me, technology is the ultimate play area; it’s a space for discovery, experimentation, and realizing creative visions. I aim to ignite curiosity, foster collaboration, and transform daring ideas into significant, influential experiences at Alphabit",
             profile_pic: "https://i.ibb.co/vC9tncwF/Whats-App-Image-2025-09-16-at-20-16-20-b9d3bc16.jpg",
             role: "Overall Student Incharge"
 
@@ -148,7 +148,7 @@ const Page = () => {
                     target: "_self"
                 },
             ],
-            desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio expedita soluta dicta dolorum quaerat, pariatur neque corrupti. Laudantium consectetur iste sunt fugit sed, accusantium nihil accusamus sapiente culpa consequatur eaque.Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio expedita soluta dicta.",
+            desc: "I’m Ishaan Kapur, a tech-driven creator with a passion for innovation and problem-solving. I explore the intersection of technology, business, and strategy to build ideas that scale. I’m always curious, always building what’s next.",
             role: "Department Head - Quiz",
             profile_pic: "https://i.ibb.co/v41v6r2Q/Whats-App-Image-2025-10-03-at-17-18-21-b33db46d.jpg"
 
@@ -196,7 +196,7 @@ const Page = () => {
             ],
             desc: "Hi! I’m Tishya Bhalla, a tech enthusiast fueled by coffee and wild ideas. For me, coding isn’t just about logic – it’s about creativity, problem solving, and turning abstract thoughts into something real and impactful. Debugging, building, experimenting – that’s where I find my flow. Alphabit, to me, is a launchpad to connect with passionate minds, exchange ideas and collaborate. Through it, I hope to contribute to a community that celebrates innovation, curiosity and the art of building something extraordinary.",
             role: "Department Head - Programming",
-            profile_pic: "https://i.ibb.co/pjxPpW1B/Whats-App-Image-2025-10-06-at-22-19-04-31347310.jpg"
+            profile_pic: "https://i.ibb.co/4RDSy94n/Whats-App-Image-2025-10-06-at-22-19-04-087cc180.jpg"
 
         },
 
