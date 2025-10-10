@@ -10,10 +10,11 @@ import {
 import { useUser } from '@clerk/nextjs';
 
 import { Trash2 } from 'lucide-react';
+import Loading from "./Components/Loading"
 
 const Page = () => {
     const [isteacherfetching, setisteacherfetching] = useState(true)
-    const [isstudentdata, setisstudentfetching] = useState(true)
+    const [isstudentfetching, setisstudentfetching] = useState(true)
     const [data, setdata] = useState(null)
     const { user, isLoaded } = useUser()
     const fetchstudentdata = async () => {
@@ -127,73 +128,80 @@ const Page = () => {
 
         }
     }
-    return (
-        <div className='pt-[10vh] flex h-[100vh]'>
-            <div className='left w-[65%] h-[90vh]'>
-                <h1 className='text-center font-bold text-3xl'>List of Students Registered</h1>
-                <table className='justify-self-center mt-7'>
-                    <tr>
-                        <th className='border-gray-400 border-2 p-2'>Name of Student</th>
-                        <th className='border-gray-400 border-2 p-2'>Class</th>
-                        <th className='border-gray-400 border-2 p-2'>Email</th>
-                        <th className='border-gray-400 border-2 p-2'>Phone Number</th>
-                        <th className='border-gray-400 border-2 p-2'>Competiton Category</th>
-                        <th className='border-gray-400 border-2 p-2'>Delete</th>
-                    </tr>
-                    {Array.isArray(data) && data.map((student) => {
-                        return (
-                            <tr key={student.name}>
-                                <td className='border-gray-400 px-2 border-2 py-1'>{student.name}</td>
-                                <td className='border-gray-400 px-2 border-2 py-1'>{student.class_}</td>
-                                <td className='border-gray-400 px-2 border-2 py-1'>{student.email}</td>
-                                <td className='border-gray-400 px-2 border-2 py-1'>{student.phonenumber}</td>
-                                <td className='border-gray-400 px-2 border-2 py-1'>{student.competition_category}</td>
-                                <td className='border-gray-400 px-2 border-2 py-1 text-center'><Trash2 className='text-red-700 text-center cursor-pointer' onClick={() => remove_student(student._id)} /></td>
-                            </tr>
-                        )
-                    })}
-
-                </table>
+    if (isteacherfetching && isstudentdata) {
+        return (
+            <div className='z-[5]'>
+                <Loading />
             </div>
+        )
+    } else {
+        return (
+            <div className='pt-[10vh] flex h-[100vh]'>
+                <div className='left w-[65%] h-[90vh]'>
+                    <h1 className='text-center font-bold text-3xl'>List of Students Registered</h1>
+                    <table className='justify-self-center mt-7'>
+                        <tr>
+                            <th className='border-gray-400 border-2 p-2'>Name of Student</th>
+                            <th className='border-gray-400 border-2 p-2'>Class</th>
+                            <th className='border-gray-400 border-2 p-2'>Email</th>
+                            <th className='border-gray-400 border-2 p-2'>Phone Number</th>
+                            <th className='border-gray-400 border-2 p-2'>Competiton Category</th>
+                            <th className='border-gray-400 border-2 p-2'>Delete</th>
+                        </tr>
+                        {Array.isArray(data) && data.map((student) => {
+                            return (
+                                <tr key={student.name}>
+                                    <td className='border-gray-400 px-2 border-2 py-1'>{student.name}</td>
+                                    <td className='border-gray-400 px-2 border-2 py-1'>{student.class_}</td>
+                                    <td className='border-gray-400 px-2 border-2 py-1'>{student.email}</td>
+                                    <td className='border-gray-400 px-2 border-2 py-1'>{student.phonenumber}</td>
+                                    <td className='border-gray-400 px-2 border-2 py-1'>{student.competition_category}</td>
+                                    <td className='border-gray-400 px-2 border-2 py-1 text-center'><Trash2 className='text-red-700 text-center cursor-pointer' onClick={() => remove_student(student._id)} /></td>
+                                </tr>
+                            )
+                        })}
 
-            <div className='right border-l-2 border-gray-500 flex justify-center w-[35%] h-full pt-16'>
-                <div className="card border-2 border-gray-400 p-8 rounded-2xl h-[70vh] shadow-xl shadow-gray-700/70">
-                    <div className="cardhead">
-                        <p className="title font-bold text-3xl">Add Your Student</p>
-                        <p className="subtitile text-gray-400 text-[1.1rem] mt-2">Please fill the below fields to add your sudents.</p>
-                    </div>
-                    <div className="cardbody mt-7">
-                        <div className='flex gap-3'>
-                            <input type="text" name="name" id="name" value={student_reg.name} onChange={(e) => setstudent_reg({ ...student_reg, name: e.target.value })} placeholder='Enter name' className=' border-2 border-gray-300 p-2 rounded-md bg-gray-800/50 w-[22rem]' />
+                    </table>
+                </div>
+
+                <div className='right border-l-2 border-gray-500 flex justify-center w-[35%] h-full pt-16'>
+                    <div className="card border-2 border-gray-400 p-8 rounded-2xl h-[70vh] shadow-xl shadow-gray-700/70">
+                        <div className="cardhead">
+                            <p className="title font-bold text-3xl">Add Your Student</p>
+                            <p className="subtitile text-gray-400 text-[1.1rem] mt-2">Please fill the below fields to add your sudents.</p>
                         </div>
-                        <div className='flex gap-3 mt-2'>
-                            <input type="text" name="class" id="class" value={student_reg.class_} onChange={(e) => setstudent_reg({ ...student_reg, class_: e.target.value })} placeholder='Enter class' className='border-2 border-gray-300 p-2 rounded-md bg-gray-800/50 w-[22rem]' />
+                        <div className="cardbody mt-7">
+                            <div className='flex gap-3'>
+                                <input type="text" name="name" id="name" value={student_reg.name} onChange={(e) => setstudent_reg({ ...student_reg, name: e.target.value })} placeholder='Enter name' className=' border-2 border-gray-300 p-2 rounded-md bg-gray-800/50 w-[22rem]' />
+                            </div>
+                            <div className='flex gap-3 mt-2'>
+                                <input type="text" name="class" id="class" value={student_reg.class_} onChange={(e) => setstudent_reg({ ...student_reg, class_: e.target.value })} placeholder='Enter class' className='border-2 border-gray-300 p-2 rounded-md bg-gray-800/50 w-[22rem]' />
+                            </div>
+                            <div className='flex gap-3 mt-2'>
+                                <input type="text" name="email" id="email" value={student_reg.email} onChange={(e) => setstudent_reg({ ...student_reg, email: e.target.value })} placeholder='Enter email' className=' border-2 border-gray-300 p-2 rounded-md bg-gray-800/50 w-[22rem]' />
+                            </div>
+                            <div className='flex gap-3 mt-2'>
+                                <input type="text" name="phonenumber" id="phonenumber" value={student_reg.phonenumber} onChange={(e) => setstudent_reg({ ...student_reg, phonenumber: e.target.value })} placeholder='Enter phone number' className=' border-2 border-gray-300 p-2 rounded-md bg-gray-800/50 w-[22rem]' />
+                            </div>
+                            <div className='mt-2'>
+                                <Select className="" onValueChange={(value) => setstudent_reg({ ...student_reg, competition_category: value })}>
+                                    <SelectTrigger className="border-2 border-gray-300 p-2 rounded-md bg-gray-800/50 w-[22rem] focus:outline-none">
+                                        <SelectValue placeholder="Select competiton category" />
+                                    </SelectTrigger>
+                                    <SelectContent className="text-white bg-gray-800/85 w-[22rem]">
+                                        <SelectItem value="Cretica" className="hover:bg-gray-900/90">Cretica</SelectItem>
+                                        <SelectItem value="Debug.Log" className="hover:bg-gray-900/90">Debug.Log</SelectItem>
+                                        <SelectItem value="Innovat-a-Thon" className="hover:bg-gray-900/90">Innovat-a-Thon</SelectItem>
+                                        <SelectItem value="Q?bit" className="hover:bg-gray-900/90">Q?bit</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                            <button className='to-75% via-20% from-blue-700 via-blue-600 to-purple-800 bg-gradient-to-r text-lg font-bold mt-7 rounded-md w-full h-12 cursor-pointer hover:from-blue-900 hover:via-blue-800 hover:to-purple-900' onClick={add_student}>Add Student</button>
                         </div>
-                        <div className='flex gap-3 mt-2'>
-                            <input type="text" name="email" id="email" value={student_reg.email} onChange={(e) => setstudent_reg({ ...student_reg, email: e.target.value })} placeholder='Enter email' className=' border-2 border-gray-300 p-2 rounded-md bg-gray-800/50 w-[22rem]' />
-                        </div>
-                        <div className='flex gap-3 mt-2'>
-                            <input type="text" name="phonenumber" id="phonenumber" value={student_reg.phonenumber} onChange={(e) => setstudent_reg({ ...student_reg, phonenumber: e.target.value })} placeholder='Enter phone number' className=' border-2 border-gray-300 p-2 rounded-md bg-gray-800/50 w-[22rem]' />
-                        </div>
-                        <div className='mt-2'>
-                            <Select className="" onValueChange={(value) => setstudent_reg({ ...student_reg, competition_category: value })}>
-                                <SelectTrigger className="border-2 border-gray-300 p-2 rounded-md bg-gray-800/50 w-[22rem] focus:outline-none">
-                                    <SelectValue placeholder="Select competiton category" />
-                                </SelectTrigger>
-                                <SelectContent className="text-white bg-gray-800/85 w-[22rem]">
-                                    <SelectItem value="Cretica" className="hover:bg-gray-900/90">Cretica</SelectItem>
-                                    <SelectItem value="Debug.Log" className="hover:bg-gray-900/90">Debug.Log</SelectItem>
-                                    <SelectItem value="Innovat-a-Thon" className="hover:bg-gray-900/90">Innovat-a-Thon</SelectItem>
-                                    <SelectItem value="Q?bit" className="hover:bg-gray-900/90">Q?bit</SelectItem>
-                                </SelectContent>
-                            </Select>
-                        </div>
-                        <button className='to-75% via-20% from-blue-700 via-blue-600 to-purple-800 bg-gradient-to-r text-lg font-bold mt-7 rounded-md w-full h-12 cursor-pointer hover:from-blue-900 hover:via-blue-800 hover:to-purple-900' onClick={add_student}>Add Student</button>
                     </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
-
 export default Page
