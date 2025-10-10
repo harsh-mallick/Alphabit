@@ -7,14 +7,17 @@ import {
     SelectTrigger,
     SelectValue,
 } from "../Components/ui/select";
+import { useUser } from '@clerk/nextjs';
 
 import { Trash2 } from 'lucide-react';
 
 const Page = () => {
-    const [isfetching, setisfetching] = useState(true)
+    const [isteacherfetching, setisteacherfetching] = useState(true)
+    const [isstudentdata, setisstudentfetching] = useState(true)
     const [data, setdata] = useState(null)
-    const fetchdata = async () => {
-        if (isfetching) {
+    const { user, isLoaded } = useUser()
+    const fetchstudentdata = async () => {
+        if (isstudentdata) {
             try {
                 const response = await fetch("/api/get-student", {
                     method: "POST",
@@ -27,7 +30,7 @@ const Page = () => {
                 const data = await response.json();
                 // console.log("Profile data:", data.data);
 
-                setisfetching(false);
+                setisstudentfetching(false);
                 setdata(data.data)
             } catch (error) {
                 console.error("Error fetching profile:", error);
@@ -36,8 +39,42 @@ const Page = () => {
     };
 
     useEffect(() => {
-        fetchdata();
+        fetchstudentdata();
     }, []);
+
+    const fetchteacherdata = async () => {
+        if (isLoaded && isteacherfetching) {
+            try {
+                const response = await fetch("/api/profile", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ clerkID: user?.username }),
+                });
+
+                const data = await response.json();
+                console.log("Profile data:", data.data.name);
+                if (typeof window !== undefined && data.data) {
+                    localStorage.setItem("teacher_incharge", data.data.name)
+                    localStorage.setItem("teacher_incharge_clerkID", data.data.clerkID)
+                    localStorage.setItem("school_name", data.data.school_name)
+                    localStorage.setItem("role", data.data.role)
+                    setisteacherfetching(false)
+                } else {
+                    setisteacherfetching(false)
+                }
+            } catch (error) {
+                console.error("Error fetching profile:", error);
+                setisteacherfetching(false)
+            }
+        }
+    };
+
+    fetchteacherdata(() => {
+        fetchdata();
+    }, [user?.username, isLoaded]);
+
 
     const [student_reg, setstudent_reg] = useState({
         name: "",
