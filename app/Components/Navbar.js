@@ -95,7 +95,7 @@ const Navbar = () => {
                         <div className="icon"><User /></div>
                         <div className="text">Profile</div>
                     </Link>
-                    {role == process.env.ADMIN_CODE ? <> <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white text-center sm:text-left justify-center sm:justify-start sm:mb-0 mb-2" href="/list-student">
+                    {role == "9080989896" ? <> <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white text-center sm:text-left justify-center sm:justify-start sm:mb-0 mb-2" href="/list-student">
                         <div className="icon"><ScrollText /></div>
                         <div className="text">Student List</div>
                     </Link>
