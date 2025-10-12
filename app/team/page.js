@@ -10,33 +10,34 @@ import discord_icon from "../Image/discord icon.png"
 const Page = () => {
     const team = [
         {
-            name: "Amatra Sejwal",
+            name: "Harsh Mallick",
             social_handles: [
                 {
-                    name: "Linkedin",
-                    icon: <Linkedin className='text-[0.95]' />,
-                    username: "amatra-sejwal",
-                    link: "https://www.linkedin.com/in/amatra-sejwal/",
+                    name: "Github",
+                    icon: <Github className='text-[0.95]' />,
+                    username: "harsh-mallick",
+                    link: "https://github.com/harsh-mallick",
                     target: "_blank"
                 },
                 {
                     name: "Email",
                     icon: <Mail />,
-                    username: "amatra.2009.sejwal@gmail.com",
+                    username: "harshmallick052009@gmail.com",
                     link: "",
                     target: "_self"
                 },
                 {
                     name: "Discord",
                     icon: <Image src={discord_icon} alt='discord icon' width={30} height={30} />,
-                    username: "@norrisfanclub_",
-                    link: "",
+                    username: "godofcoding",
+                    link: "https://discord.com/users/993506513534595213",
                     target: "_blank"
                 }
             ],
-            desc: "Hello there! I’m Amatra! Currently navigating the chaos of academics with caffeine as my co-pilot and an endless curiosity about how everything, from equations to engines, works. I’ve always loved blending creativity with logic, whether it’s through writing, design, or leading projects that bring ideas to life. Outside the world of deadlines and events, you’ll usually find me geeking out over fighter jets, Star Wars, Formula 1 (yes, Norris deserves that WDC), or debating and diving into the wonders of astronomy and physics. For me, Alphabit isn’t just a fest; it’s where curiosity meets creation, and organized chaos turns into something extraordinary, which i will always look forward to!",
-            profile_pic: "https://i.ibb.co/1GhM1Ys7/Whats-App-Image-2025-10-01-at-22-52-47-eff93df4.jpg",
-            role: "Overall Student Incharge"
+            desc: "I’m Harsh Mallick, and I have a passion for all things digital. From full-stack web development to 3D design, I love building virtual worlds that merge creativity with tech. In my free time, I dive into the latest AI releases, always curious about how new tools can be woven into projects. For me, Alphabit is like a canvas to experiment, innovate, and share ideas that spark inspiration in the tech community.",
+            role: "Overall Student Incharge, Website Admin",
+            profile_pic: "https://i.ibb.co/LDfTmQys/Me.png"
+            // profile_pic: "https://i.ibb.co/LdzwMhbp/Whats-App-Image-2025-09-15-at-14-39-22-7922f532.jpg"
 
         },
         {
@@ -69,35 +70,35 @@ const Page = () => {
             role: "Overall Student Incharge"
 
         },
+
         {
-            name: "Harsh Mallick",
+            name: "Amatra Sejwal",
             social_handles: [
                 {
-                    name: "Github",
-                    icon: <Github className='text-[0.95]' />,
-                    username: "harsh-mallick",
-                    link: "https://github.com/harsh-mallick",
+                    name: "Linkedin",
+                    icon: <Linkedin className='text-[0.95]' />,
+                    username: "amatra-sejwal",
+                    link: "https://www.linkedin.com/in/amatra-sejwal/",
                     target: "_blank"
                 },
                 {
                     name: "Email",
                     icon: <Mail />,
-                    username: "harshmallick052009@gmail.com",
+                    username: "amatra.2009.sejwal@gmail.com",
                     link: "",
                     target: "_self"
                 },
                 {
                     name: "Discord",
                     icon: <Image src={discord_icon} alt='discord icon' width={30} height={30} />,
-                    username: "godofcoding",
-                    link: "https://discord.com/users/993506513534595213",
+                    username: "@norrisfanclub_",
+                    link: "",
                     target: "_blank"
                 }
             ],
-            desc: "I’m Harsh Mallick, and I have a passion for all things digital. From full-stack web development to 3D design, I love building virtual worlds that merge creativity with tech. In my free time, I dive into the latest AI releases, always curious about how new tools can be woven into projects. For me, Alphabit is like a canvas to experiment, innovate, and share ideas that spark inspiration in the tech community.",
-            role: "Overall Student Incharge, Website Admin",
-            profile_pic: "https://i.ibb.co/LDfTmQys/Me.png"
-            // profile_pic: "https://i.ibb.co/LdzwMhbp/Whats-App-Image-2025-09-15-at-14-39-22-7922f532.jpg"
+            desc: "Hello there! I’m Amatra! Currently navigating the chaos of academics with caffeine as my co-pilot and an endless curiosity about how everything, from equations to engines, works. I’ve always loved blending creativity with logic, whether it’s through writing, design, or leading projects that bring ideas to life. For me, Alphabit isn’t just a fest; it’s where curiosity meets creation, and organized chaos turns into something extraordinary, which i will always look forward to!",
+            profile_pic: "https://i.ibb.co/1GhM1Ys7/Whats-App-Image-2025-10-01-at-22-52-47-eff93df4.jpg",
+            role: "Overall Student Incharge, Department Head - Innovat-a-thon"
 
         },
         {
@@ -129,6 +130,28 @@ const Page = () => {
             role: "Department Head - Creative",
             profile_pic: "https://i.ibb.co/0y9xdDCL/IMG-20250915-WA0011-1.jpg"
 
+        },
+        {
+            name: "Riddhima Baluni",
+            social_handles: [
+                {
+                    name: "Email",
+                    icon: <Mail />,
+                    username: "ridhimabaluni1977@gmail.com",
+                    link: "",
+                    target: "_self"
+                },
+                {
+                    name: "Discord",
+                    icon: <Image src={discord_icon} alt='discord icon' width={30} height={30} />,
+                    username: "rb_what_88742",
+                    link: "",
+                    target: "_blank"
+                }
+            ],
+            desc: "I love exploring new ideas, experimenting with creative solutions, and turning concepts into engaging experiences. Being part of Alphabit gives me the opportunity to connect with like-minded peers, bring innovative ideas to life, and contribute to an event that inspires and excites everyone involved. I believe in collaboration, learning through doing, and making every project a meaningful and memorable experience.",
+            role: "Department Head - Creative",
+            profile_pic: "https://i.ibb.co/twdJLB50/Whats-App-Image-2025-10-12-at-20-21-14-4778facc.jpg"
         },
         {
             name: "Ishaan Kapur",
@@ -199,6 +222,24 @@ const Page = () => {
             profile_pic: "https://i.ibb.co/4RDSy94n/Whats-App-Image-2025-10-06-at-22-19-04-087cc180.jpg"
 
         },
+        {
+            name: "Raghav Sharma ",
+            social_handles: [
+                {
+                    name: "Email",
+                    icon: <Mail />,
+                    username: "raghavsharma12009@gmail.com",
+                    link: "",
+                    target: "_self"
+                },
+
+            ],
+            desc: "Hi! I’m Tishya Bhalla, a tech enthusiast fueled by coffee and wild ideas. For me, coding isn’t just about logic – it’s about creativity, problem solving, and turning abstract thoughts into something real and impactful. Debugging, building, experimenting – that’s where I find my flow. Alphabit, to me, is a launchpad to connect with passionate minds, exchange ideas and collaborate. Through it, I hope to contribute to a community that celebrates innovation, curiosity and the art of building something extraordinary.",
+            role: "Department Head - Innovat-a-thon",
+            profile_pic: "https://i.ibb.co/4RDSy94n/Whats-App-Image-2025-10-06-at-22-19-04-087cc180.jpg"
+
+        },
+
 
     ]
     const vantaRef = useRef(null)
@@ -243,8 +284,8 @@ const Page = () => {
                         return (
                             <div className="card w-[25rem] h-auto border-2 border-gray-800 rounded-2xl bg-gray-800/80 mt-3 scale-[0.9] grid" key={team.name}>
                                 <div className="img "> <Image src={team.profile_pic} width={400} height={0} alt='img' className='rounded-t-2xl h-[405px]' /></div>
-                                <div className="body p-3">
-                                    <div className="heading font-bold text-2xl">{team.name}</div>
+                                <div className="body p-3 ">
+                                    <div className="heading font-bold text-2xl ">{team.name}</div>
                                     <div className="desc text-[0.95rem] mb-5 mt-5">{team.desc}</div>
                                     {Array.isArray(team.social_handles) && team.social_handles.map((social_handles) => {
                                         return (
@@ -252,7 +293,7 @@ const Page = () => {
                                         )
                                     })}
                                 </div>
-                                <p className='bg-black text-center h-10 rounded-b-2xl pt-[0.5rem] text-lg font-bold self-end'>{team.role}</p>
+                                <p className='bg-black text-center h-auto rounded-b-2xl pt-[0.5rem] text-lg font-bold self-end'>{team.role}</p>
                             </div>
                         )
                     })}

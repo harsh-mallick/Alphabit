@@ -136,8 +136,8 @@ const Page = () => {
         )
     } else {
         return (
-            <div className='pt-[10vh] flex h-[100vh]'>
-                <div className='left w-[65%] h-[90vh]'>
+            <div className='pt-[10vh] sm:flex sm:h-[100vh] h-auto'>
+                <div className='sm:left sm:w-[65%] h-[90vh]'>
                     <h1 className='text-center font-bold text-3xl'>List of Students Registered</h1>
                     <table className='justify-self-center mt-7'>
                         <tr>
@@ -164,7 +164,7 @@ const Page = () => {
                     </table>
                 </div>
 
-                <div className='right border-l-2 border-gray-500 flex justify-center w-[35%] h-full pt-16'>
+                <div className='sm:right sm:border-l-2 border-gray-500 flex justify-center sm:w-[35%] h-full pt-16 sm:mb-0 mb-5'>
                     <div className="card border-2 border-gray-400 p-8 rounded-2xl h-[70vh] shadow-xl shadow-gray-700/70">
                         <div className="cardhead">
                             <p className="title font-bold text-3xl">Add Your Student</p>
