@@ -51,7 +51,7 @@ const Navbar = () => {
         },
     ]
     return (
-        <div className='sm:h-[10vh] h-auto sm:flex w-screen px-5 py-3 items-center bg-black sm:bg-gray-900/30 backdrop-blur-xl z-[3] fixed'>
+        <div className='sm:h-[10vh] h-auto sm:flex w-screen px-5 py-3 items-center bg-black sm:bg-gray-900/30 backdrop-blur-xl z-[9] fixed'>
             <div className="left flex sm:justify-center sm:w-1/5 gap-3 ">
                 <div className='flex w-screen justify-between'>
                     <div onClick={() => router.push('/')} className='flex gap-3 cursor-pointer'>

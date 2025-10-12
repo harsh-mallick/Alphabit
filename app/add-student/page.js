@@ -137,8 +137,8 @@ const Page = () => {
     } else {
         return (
             <div className='pt-[10vh] sm:flex sm:h-[100vh] h-auto'>
-                <div className='sm:left sm:w-[65%] h-[90vh]'>
-                    <h1 className='text-center font-bold text-3xl'>List of Students Registered</h1>
+                <div className='sm:left sm:w-[65%] w-auto h-[90vh]'>
+                    <h1 className='text-center font-bold text-2xl sm:text-3xl'>List of Students Registered</h1>
                     <table className='justify-self-center mt-7'>
                         <tr>
                             <th className='border-gray-400 border-2 p-2'>Name of Student</th>

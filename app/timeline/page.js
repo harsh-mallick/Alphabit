@@ -5,7 +5,7 @@ import timeline_image from "../Image/timelinebg.jpg"
 
 const Page = () => {
     return (
-        <div className='text-[#f3f4f6] font-sans min-h-screen   z-[-2] timeline_bg_1'>
+        <div className='text-[#f3f4f6] font-sans min-h-screen   z-[-8] timeline_bg_1'>
             {/* <div className='h-full'>
                 <Image height={0} width={0} src={timeline_image} alt='bg_image' className='timeline_bg' />
             </div> */}

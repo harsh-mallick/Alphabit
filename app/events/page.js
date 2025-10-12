@@ -48,7 +48,7 @@ const Page = () => {
         <div className='pt-[10vh]'>
             <h1 className='text-center font-extrabold text-[3rem] tracking-[0.1em] to-75% via-20% from-blue-400 via-blue-500 to-purple-600 bg-gradient-to-r bg-clip-text text-transparent'>Events</h1>
             <p className='text-center text-[1.1rem] mt-3'>Discover exciting tech events, workshops, and competitions designed to expand your <br /> knowledge and connect you with fellow innovators.</p>
-            <div className='grid grid-cols-2 w-[70%] justify-items-center mt-3 justify-self-center mb-3'>
+            <div className='sm:grid grid-cols-2 w-[70%] justify-items-center mt-3 justify-self-center mb-3'>
                 {Array.isArray(event) && event.map((event) => {
                     return (
                         <div className="card w-[25rem] grid h-auto border-2 border-gray-800 rounded-2xl bg-gray-800/30 mt-3" key={event.heading}>
