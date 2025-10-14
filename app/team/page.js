@@ -233,9 +233,9 @@ const Page = () => {
                 },
 
             ],
-            desc: "Hi! I’m Tishya Bhalla, a tech enthusiast fueled by coffee and wild ideas. For me, coding isn’t just about logic – it’s about creativity, problem solving, and turning abstract thoughts into something real and impactful. Debugging, building, experimenting – that’s where I find my flow. Alphabit, to me, is a launchpad to connect with passionate minds, exchange ideas and collaborate. Through it, I hope to contribute to a community that celebrates innovation, curiosity and the art of building something extraordinary.",
+            desc: "I feed on finding new ways of seeing, creating innovative solutions, and bringing abstract concepts to life as vibrant experiences. As a part of alphabit i am an enthusiast of building teamwork, experiential learning, and an attitude of innovation. Committed to making each venture powerful and memorable, I seek to inspire peers, instill curiosity, and create events that touch and enliven everyone involved.",
             role: "Department Head - Innovat-a-thon",
-            profile_pic: "https://i.ibb.co/4RDSy94n/Whats-App-Image-2025-10-06-at-22-19-04-087cc180.jpg"
+            profile_pic: "https://i.ibb.co/pvL8bHST/Whats-App-Image-2025-10-14-at-22-26-42-4727d6e9.jpg"
 
         },
 

@@ -6,7 +6,7 @@ export async function POST(req) {
     connect()
     try {
         const body = await req.json()
-        if (body.role == "admin") {
+        if (body.role == "9080989896") {
             const data = await UserPage.find({})
             return NextResponse.json({ success: true, status_code: 200, message: "Teachers Data Recieved", data: data })
         } else {
