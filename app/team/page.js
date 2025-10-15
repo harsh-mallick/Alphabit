@@ -96,7 +96,7 @@ const Page = () => {
                 }
             ],
             desc: "Hello there! I’m Amatra! Currently navigating the chaos of academics with caffeine as my co-pilot and an endless curiosity about how everything, from equations to engines, works. I’ve always loved blending creativity with logic, whether it’s through writing, design, or leading projects that bring ideas to life. For me, Alphabit isn’t just a fest; it’s where curiosity meets creation, and organized chaos turns into something extraordinary, which i will always look forward to!",
-            profile_pic: "https://i.ibb.co/1GhM1Ys7/Whats-App-Image-2025-10-01-at-22-52-47-eff93df4.jpg",
+            profile_pic: "https://i.ibb.co/Hf1KrDS0/14443810381.png",
             role: "Overall Student Incharge, Department Head - Innovat-a-thon"
 
         },
