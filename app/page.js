@@ -102,13 +102,13 @@ const Page = () => {
 
   }, 1000);
 
-  useEffect(() => {
-    const handlePrompt = () => {
-      const confirm = window.confirm("See the prompts for the Creatica and Innovat-a-thon event?");
-      if (confirm) {
-        router.push('./prompts');
-      }
-    };
+  // useEffect(() => {
+  //   const handlePrompt = () => {
+  //     const confirm = window.confirm("See the prompts for the Creatica and Innovat-a-thon event?");
+  //     if (confirm) {
+  //       router.push('./prompts');
+  //     }
+  //   };
 
     // Run after component mounts (simulating window.onload)
     handlePrompt();
