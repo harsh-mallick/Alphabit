@@ -10,8 +10,8 @@ const Page = () => {
         {
             heading: "Creatica",
             img: "https://i.ibb.co/tphxd0VK/for-creatica.webp",
-            desc: "The ultimate battleground for coding aficionados seeking to showcase their problem-solving abilities. Challenge yourself against the best and battle the clock in this high-intensity coding competition!",
-            date: "14 Nov 2025",
+            desc: "Creatica is an electrifying graphic design competition that dares participants to transform abstract prompts into stunning visuals. This is where imagination meets execution — from designing a magazine cover, album artwork, movie poster, or brand identity board.",
+            date: "12 Nov 2025",
             time: "9:00 am",
             place: "Middle Lab",
             participants: "2 Participants per team"
