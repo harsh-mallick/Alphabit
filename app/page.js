@@ -111,8 +111,8 @@ const Page = () => {
   //   };
 
     // Run after component mounts (simulating window.onload)
-    handlePrompt();
-  }, []);
+  //   handlePrompt();
+  // }, []);
 
   if (isfetching) {
     return (
