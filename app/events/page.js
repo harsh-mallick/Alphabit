@@ -31,7 +31,7 @@ const Page = () => {
             desc: "Join us for an exhilarating Hackathon where innovation meets coding prowess! Our challenge: Solve real-world problems by developing cutting-edge web applications. Gather your team, brainstorm ingenious solutions, and race against the clock in this one week coding extravaganza. ",
             date: "12 Nov 2025",
             time: "9:00 am",
-            place: "Library",
+            place: "B.Ed Hall",
             participants: "2 Participants per team"
         },
         {
@@ -60,9 +60,6 @@ const Page = () => {
                                 <div className="time flex mb-1 gap-2 text-gray-300 text-[0.95rem]"><Clock /> {event.time}</div>
                                 <div className="place flex mb-1 gap-2 text-gray-300 text-[0.95rem]"><MapPin />{event.place}</div>
                                 <div className="participant flex mb-1 gap-2 text-gray-300 text-[0.95rem]"><Users />{event.participants}</div>
-                            </div>
-                            <div className='text-center p-3 self-end'>
-                                <button className='to-75% via-20% from-blue-700 via-blue-600 to-purple-800 bg-gradient-to-r text-lg font-bold mt-4 rounded-md w-full h-12 cursor-pointer hover:from-blue-900 hover:via-blue-800 hover:to-purple-900' onClick={() => { router.push("/sign-up") }}>Register</button>
                             </div>
                         </div>
                     )

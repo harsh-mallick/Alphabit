@@ -102,6 +102,18 @@ const Page = () => {
 
   }, 1000);
 
+  useEffect(() => {
+    const handlePrompt = () => {
+      const confirm = window.confirm("See the prompts for the Creatica and Innovat-a-thon event?");
+      if (confirm) {
+        router.push('./prompts');
+      }
+    };
+
+    // Run after component mounts (simulating window.onload)
+    handlePrompt();
+  }, []);
+
   if (isfetching) {
     return (
       <div className='z-[5]'>
@@ -149,7 +161,7 @@ const Page = () => {
               </div>
             </div>
             <p className='font-bold pt-8 text-xl'>Join us on 12 November, 2025 @ 8:30am</p>
-            <button className='to-75% via-20% from-blue-700 via-blue-600 to-purple-800 bg-gradient-to-r text-xl font-bold mt-12 p-3 rounded-3xl w-48 h-15 cursor-pointer hover:from-blue-900 hover:via-blue-800 hover:to-purple-900' onClick={() => { router.push("/sign-up") }}>Register Now</button>
+            <button className='to-75% via-20% from-blue-700 via-blue-600 to-purple-800 bg-gradient-to-r text-xl font-bold mt-12 p-3 rounded-3xl w-48 h-15 cursor-pointer hover:from-blue-900 hover:via-blue-800 hover:to-purple-900' onClick={() => { window.open('https://forms.gle/GGxWXHqf8UY5W7bE7', '_blank') }}>Register Now</button>
 
           </div>
 

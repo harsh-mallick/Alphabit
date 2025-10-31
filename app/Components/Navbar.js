@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react'
-import { House, Calendar, UsersRound, Clock, LogOut, User, UserPlus, ScrollText } from 'lucide-react';
+import { House, Calendar, UsersRound, Clock, LogOut, User, UserPlus, ScrollText, NotebookText } from 'lucide-react';
 import logo from "../Image/alphabit.png"
 import Image from "next/image"
 import Link from 'next/link';
@@ -71,14 +71,18 @@ const Navbar = () => {
                             </Link>
                         )
                     })}
-                    <div className="button">
+                    <Link className="nav flex gap-4 cursor-pointer pr-5 text-base text-slate-300 hover:text-white text-center sm:text-left justify-center sm:justify-start sm:mb-0 mb-2" href='/prompts'>
+                        <div className="icons"><NotebookText /></div>
+                        <div className='text'>Prompts</div>
+                    </Link>
+                    {/* <div className="button">
                         <SignUpButton>
                             <button className='border-2 border-green-500 mr-3 p-2 rounded-xl cursor-pointer hover:bg-green-300 hover:text-black font-bold'>Sign Up</button>
                         </SignUpButton>
                         <SignInButton>
                             <button className='border-2 border-yellow-500 mr-3 p-2 rounded-xl cursor-pointer hover:bg-yellow-300 hover:text-black font-bold'>Sign In</button>
                         </SignInButton>
-                    </div>
+                    </div> */}
                 </div>
             </SignedOut>
             <SignedIn>
