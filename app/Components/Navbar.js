@@ -71,7 +71,7 @@ const Navbar = () => {
                         </Link>
                     )
                 })}
-                <Link className="nav flex gap-4 cursor-pointer pr-5 text-base text-slate-300 hover:text-white text-center sm:text-left justify-center sm:justify-start sm:mb-0 mb-2" href='/prompts'>
+                <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white text-center sm:text-left justify-center sm:justify-start sm:mb-0 mb-2" href='/prompts'>
                     <div className="icons"><NotebookText /></div>
                     <div className='text'>Prompts</div>
                 </Link>
