@@ -25,7 +25,7 @@ const handleDownload = (pdfPath) => {
 
 export default function PromptRelease() {
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center px-6 py-12 text-center">
+        <div className="min-h-screen flex flex-col items-center justify-center px-6 py-12 text-center pt-[10vh]">
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-3 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">
                 Prompt Release
             </h1>

@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect } from "react";
-import { useSignUp } from "@clerk/nextjs";
+// import { useSignUp } from "@clerk/nextjs";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,8 +11,16 @@ import { Mail, Lock, User, Loader2, Phone, Hash } from "lucide-react";
 import { motion } from "motion/react";
 import "../../globals.css";
 
+
 const Page = () => {
-    const { signUp, isLoaded, setActive } = useSignUp();
+    const [particles, setParticles] = useState([]);
+
+    useEffect(() => {
+        router.push('/')
+    }, []);
+
+
+    // const { signUp, isLoaded, setActive } = useSignUp();
     const [verifying, setVerifying] = useState(false);
     const [verificationCode, setVerificationCode] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -114,21 +122,6 @@ const Page = () => {
             setIsSubmitting(false);
         }
     };
-
-    const [particles, setParticles] = useState([]);
-
-    useEffect(() => {
-        const particleCount = 17;
-        const colors = ["#3B82F6", "#10B981", "#7C3AED", "#0EA5E9", "#6366F1"];
-        const newParticles = Array.from({ length: particleCount }).map((_, i) => ({
-            key: i,
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-            radius: Math.random() * 3 + 2,
-            color: colors[Math.floor(Math.random() * colors.length)],
-        }));
-        setParticles(newParticles);
-    }, []);
 
     // ====== Verification Page ======
     if (verifying) {

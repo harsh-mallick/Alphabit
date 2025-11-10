@@ -8,7 +8,7 @@ import {
     SelectValue,
 } from "../Components/ui/select";
 import { useUser } from '@clerk/nextjs';
-
+import { useRouter } from 'next/navigation';
 import { Trash2 } from 'lucide-react';
 import Loading from "../Components/Loading"
 
@@ -17,6 +17,7 @@ const Page = () => {
     const [isstudentfetching, setisstudentfetching] = useState(true)
     const [data, setdata] = useState(null)
     const { user, isLoaded } = useUser()
+    const router = useRouter()
     const fetchstudentdata = async () => {
         if (isstudentfetching) {
             try {
@@ -40,6 +41,7 @@ const Page = () => {
     };
 
     useEffect(() => {
+        router.push("/")
         fetchstudentdata();
     }, []);
 
