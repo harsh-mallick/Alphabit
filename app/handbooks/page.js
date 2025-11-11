@@ -30,7 +30,7 @@ export default function HandbookRelease() {
                 Handbook Release
             </h1>
             <p className="text-gray-300 text-sm md:text-base mb-10">
-                Download the official handbook prompts below.
+                Download the official handbook below.
             </p>
 
             <div className="relative flex justify-between items-center mb-[20px] p-6 border border-white rounded-xl">
