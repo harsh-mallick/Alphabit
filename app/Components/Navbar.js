@@ -75,6 +75,10 @@ const Navbar = () => {
                     <div className="icons"><NotebookText /></div>
                     <div className='text'>Prompts</div>
                 </Link>
+                <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white text-center sm:text-left justify-center sm:justify-start sm:mb-0 mb-2" href='/handbooks'>
+                    <div className="icons"><NotebookText /></div>
+                    <div className='text'>Handbook</div>
+                </Link>
                 <Link className="nav flex gap-4 cursor-pointer pr-5 text-base text-slate-300 hover:text-white text-center sm:text-left justify-center sm:justify-start sm:mb-0 mb-2" href='/results'>
                     <div className="icons"><NotebookText /></div>
                     <div className='text'>Results</div>
