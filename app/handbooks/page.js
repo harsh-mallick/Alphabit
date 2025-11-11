@@ -30,10 +30,10 @@ export default function HandbookRelease() {
                 Handbook Release
             </h1>
             <p className="text-gray-300 text-sm md:text-base mb-10">
-                Download the official event prompts below.
+                Download the official handbook prompts below.
             </p>
 
-            {/* <div className="relative flex justify-between items-center mb-[20px] p-6 border border-white rounded-xl">
+            <div className="relative flex justify-between items-center mb-[20px] p-6 border border-white rounded-xl">
                 <div className="space-y-3">
                     <h2 className="text-3xl md:text-3xl font-bold text-foreground tracking-tight mr-[7rem]">
                         Guidelines and Feedback
@@ -41,13 +41,13 @@ export default function HandbookRelease() {
                 </div>
 
                 <button
-                    onClick={() => handleDownload('')}
+                    onClick={() => handleDownload('/Handbooks/guidelines handbook.pdf')}
                     className="w-auto h-[50px] flex items-center justify-center gap-3 px-6 py-4 rounded-xl border-2 border-foreground/20 bg-foreground/5 text-foreground font-medium transition-all duration-300 hover:bg-foreground hover:text-background hover:border-foreground hover:shadow-lg hover:shadow-foreground/20 group/btn cursor-pointer"
                 >
                     <Download className="w-5 h-5 transition-transform duration-300 group-hover/btn:translate-y-0.5 " />
                     <span>Download Handbook</span>
                 </button>
-            </div> */}
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl w-full">
                 {events.map((event, index) => (
