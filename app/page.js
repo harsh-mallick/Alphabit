@@ -1,16 +1,16 @@
 "use client"
 import React, { useState, useEffect } from 'react'
-import logo from "./Image/alphabit.png"
+import logo from "./Image/alphabit3.png"
 import Image from "next/image"
-import { Mail, Phone, MapPinHouse } from 'lucide-react';
+import { Mail, Phone, MapPinHouse, MoveRight } from 'lucide-react';
 import { useUser } from '@clerk/nextjs'
 import Typewriter from 'typewriter-effect';
 import { useRouter } from 'next/navigation';
 import Loading from "./Components/Loading"
-
+import Background from "./Components/Background"
 const Page = () => {
   // const { user, isLoaded } = useUser()
-  const eventDate = new Date("2025-11-12T09:00:00").getTime();
+  const eventDate = new Date("2026-11-10T09:00:00").getTime();
   const [month, setMonth] = useState()
   const [days, setDays] = useState()
   const [hours, setHours] = useState()
@@ -103,46 +103,48 @@ const Page = () => {
   }, 1000);
 
   return (
-    <div className='pt-[10vh] '>
-      <video autoPlay loop muted playsInline aria-hidden="true" pointerEvents="none" className="absolute z-[0] sm:h-full h-[90rem] w-full top-0 left-0 object-cover" style={{ mixBlendMode: "color-dodge", opacity: '0.4' }}>
-        <source src="./circuit.mp4" />
+    <div className='pt-[10vh]'>
+      {/* <Background /> */}
+      <video autoPlay loop muted playsInline aria-hidden="true" pointerEvents="none" preload="metadata" className="absolute z-[0] sm:h-full w-full top-0 left-0 object-cover" style={{ mixBlendMode: "difference", opacity: '0.8' }}>
+        <source src="./videos/circuit2.mkv" type="video/mkv" />
+        <source src="/videos/circuit2.webm" type="video/webm" />
       </video>
-      <div className='z-[1] relative'>
-        <div className="home text-center h-[100vh] pt-[10vh]">
-          <div className='w-full flex justify-center'><div className="logo w-24 border-2 border-transparent rounded-full"><Image src={logo} alt="abc" width={0} height={0} /></div></div>
-          <h1 className='text-center font-extrabold text-[4rem] tracking-[0.1em] to-75% via-20% from-blue-400 via-blue-500 to-pink-400 bg-gradient-to-r bg-clip-text text-transparent font_audiowide'><Typewriter
+      <div className='z-[1] relative bg-[#010029]/35'>
+        <div className="home text-center h-[100vh] pt-[5vh]">
+          <div className='w-full flex justify-center'><div className="logo w-36 border-2 border-transparent rounded-full"><Image src={logo} alt="abc" width={0} height={0} /></div></div>
+          <h1 className='text-center font-extrabold text-[4rem] tracking-[0.1em] text-white font_audiowide'><Typewriter
             options={{
-              strings: ['Alphabit'],
+              strings: ['ALPHABIT'],
               autoStart: true,
               loop: true,
             }}
           /></h1>
-          <h2 className='font-extrabold text-2xl'>Amity Saket Presents Tech Fest 2025</h2>
+          <h2 className='font-extrabold text-2xl'>Amity Saket Presents Tech Fest 2026</h2>
           <p className='text-gray-300 mt-4 font-bold sm:w-3xl w-auto justify-self-center'>Alphabit is being organized since 2013 with the objective to provide young students with a platform to exchange ideas and explore new avenues of knowledge in the field of technology.</p>
           <div className="timing flex gap-3 w-full justify-center mt-10">
-            <div className='bg-gray-800 h-24 w-28 rounded-2xl text-white hover:scale-[1.1] transition-all ease-in'>
+            <div className='bg-[020108]/50 glowing-element h-24 w-28 rounded-2xl text-white hover:scale-[1.1] transition-all ease-in'>
               <p className='text-3xl font-bold mt-4'>{month}</p>
               <p className='mt-2 text-sm text-gray-300'>Month</p>
             </div>
-            <div className='bg-gray-800 h-24 w-28 rounded-2xl text-white hover:scale-[1.1] transition-all ease-in' >
+            <div className='bg-[020108]/50 glowing-element h-24 w-28 rounded-2xl text-white hover:scale-[1.1] transition-all ease-in' >
               <p className='text-3xl font-bold mt-4'>{days}</p>
               <p className='mt-2 text-sm text-gray-300'>Days</p>
             </div>
-            <div className='bg-gray-800 h-24 w-28 rounded-2xl text-white hover:scale-[1.1] transition-all ease-in'>
+            <div className='bg-[020108]/50 glowing-element h-24 w-28 rounded-2xl text-white hover:scale-[1.1] transition-all ease-in'>
               <p className='text-3xl font-bold mt-4'>{hours}</p>
               <p className='mt-2 text-sm text-gray-300'>Hours</p>
             </div>
-            <div className='bg-gray-800 h-24 w-28 rounded-2xl text-white hover:scale-[1.1] transition-all ease-in'>
+            <div className='bg-[020108]/50 glowing-element h-24 w-28 rounded-2xl text-white hover:scale-[1.1] transition-all ease-in'>
               <p className='text-3xl font-bold mt-4'>{minutes}</p>
               <p className='mt-2 text-sm text-gray-300'>Minutes</p>
             </div>
-            <div className='bg-gray-800 h-24 w-28 rounded-2xl text-white hover:scale-[1.1] transition-all ease-in'>
+            <div className='bg-[020108]/50 glowing-element h-24 w-28 rounded-2xl text-white hover:scale-[1.1] transition-all ease-in'>
               <p className='text-3xl font-bold mt-4'>{seconds}</p>
               <p className='mt-2 text-sm text-gray-300'>Seconds</p>
             </div>
           </div>
-          <p className='font-bold pt-8 text-xl'>Join us on 12 November, 2025 @ 8:30am</p>
-          <button className='to-75% via-20% from-blue-700 via-blue-600 to-purple-800 bg-gradient-to-r text-xl font-bold mt-12 p-3 rounded-3xl w-48 h-15 cursor-pointer hover:from-blue-900 hover:via-blue-800 hover:to-purple-900' onClick={() => { window.open('https://forms.gle/GGxWXHqf8UY5W7bE7', '_blank') }}>Register Now</button>
+          <p className='font-bold pt-8 text-xl'>Join us on 10 November, 2025 @ 8:30am</p>
+          <button className='to-75% via-20% from-blue-700 via-blue-600 to-purple-800 bg-gradient-to-r text-xl font-bold mt-12 p-3 rounded-3xl w-56 h-15 cursor-pointer hover:from-blue-900 hover:via-blue-800 hover:to-purple-900 double-border' onClick={() => { window.open('https://forms.gle/GGxWXHqf8UY5W7bE7', '_blank') }}> <p className='flex flex-row gap-4 items-center justify-center'> Register Now <MoveRight /></p></button>
 
         </div>
 

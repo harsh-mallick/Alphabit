@@ -216,3 +216,114 @@ body {
   /* Add a subtle text shadow for a glow effect */
   text-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
 }
+
+.circuit-background {
+          position: fixed;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          pointer-events: none;
+          z-index: -1;
+          background: #032f87;
+        }
+
+        .circuit-svg {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+        }
+
+        .circuit {
+          stroke: #0057e2;
+          stroke-width: 2.5;
+          opacity: 0.28;
+          filter: brightness(1.3);
+        }
+
+        .circuit-dim {
+          stroke: #087da9;
+          opacity: 0.14;
+        }
+
+        .circuit-purple {
+          stroke: #e600ff;
+          opacity: 0.4;
+          filter: brightness(1.2);
+          filter: blur(1);
+        }
+
+        .circuit-small {
+          stroke: #00bfff;
+          stroke-width: 1;
+          opacity: 0.12;
+        }
+
+        .node {
+          animation: nodePulse 3s ease-in-out infinite;
+        }
+
+        .node-cyan {
+          fill: #00cfff;
+          filter: url(#cyanGlow);
+        }
+
+        .node-purple {
+          fill: #9b5cff;
+          filter: url(#purpleGlow);
+          animation-delay: 1.2s;
+        }
+
+        .data-packet {
+          fill: #00e5ff;
+        }
+
+        .purple-packet {
+          fill: #b066ff;
+        }
+
+        @keyframes nodePulse {
+          0%,
+          100% {
+            opacity: 0.35;
+            transform: scale(0.8);
+          }
+
+          50% {
+            opacity: 1;
+            transform: scale(1.5);
+          }
+        }
+
+        @media (max-width: 768px) {
+          .circuit {
+            stroke-width: 1.2;
+            opacity: 0.18;
+          }
+
+          .circuit-dim {
+            opacity: 0.09;
+          }
+
+          .circuit-purple {
+            opacity: 0.14;
+          }
+
+          .circuit-small {
+            opacity: 0.07;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .node {
+            animation: none;
+          }
+        }
+
+.glowing-element {
+  border: 2px solid #00336a;
+  border-radius: 8px;
+  /* Creates a soft blue glow */
+  box-shadow: inset 0 0 30px #00336a, inset 0 0 20px rgba(0, 45, 93, 0.5);
+}
