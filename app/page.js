@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import logo from "./Image/alphabit3.png"
 import Image from "next/image"
 import { Mail, Phone, MapPinHouse, MoveRight } from 'lucide-react';
-import { useUser } from '@clerk/nextjs'
+// import { useUser } from '@clerk/nextjs'
 import Typewriter from 'typewriter-effect';
 import { useRouter } from 'next/navigation';
 import Loading from "./Components/Loading"
