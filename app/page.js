@@ -6,10 +6,10 @@ import { Mail, Phone, MapPinHouse, MoveRight } from 'lucide-react';
 // import { useUser } from '@clerk/nextjs'
 import Typewriter from 'typewriter-effect';
 import { useRouter } from 'next/navigation';
-import Loading from "./Components/Loading"
+import Loading from "./Components/Loading";
+import dummy_map_img from "./Image/gmaps_dummy.png"
 
 const Page = () => {
-  // const { user, isLoaded } = useUser()
   const eventDate = new Date("2026-11-06T09:00:00").getTime();
   const [month, setMonth] = useState()
   const [days, setDays] = useState()
@@ -50,14 +50,22 @@ const Page = () => {
   }
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const hasReloaded = sessionStorage.getItem("hasReloaded");
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      let distance = eventDate - now;
 
-      if (!hasReloaded) {
-        sessionStorage.setItem("hasReloaded", "true");
-        window.location.reload();
-      }
-    }
+
+      // Calculate total seconds
+      const totalSeconds = Math.floor(distance / 1000);
+
+      setMonth(Math.floor(totalSeconds / (30 * 24 * 60 * 60))) // assuming 30 days/month
+      setDays(Math.floor((totalSeconds % (30 * 24 * 60 * 60)) / (24 * 60 * 60)))
+      setHours(Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60)))
+      setMinutes(Math.floor((totalSeconds % (60 * 60)) / 60))
+      setSeconds(totalSeconds % 60)
+
+    }, 1000);
+    return () => clearInterval(timer);
   }, []);
 
   // const fetchdata = async () => {
@@ -93,21 +101,7 @@ const Page = () => {
   //   fetchdata();
   // }, [user?.username, isLoaded]);
 
-  const timer = setInterval(() => {
-    const now = new Date().getTime();
-    let distance = eventDate - now;
 
-
-    // Calculate total seconds
-    const totalSeconds = Math.floor(distance / 1000);
-
-    setMonth(Math.floor(totalSeconds / (30 * 24 * 60 * 60))) // assuming 30 days/month
-    setDays(Math.floor((totalSeconds % (30 * 24 * 60 * 60)) / (24 * 60 * 60)))
-    setHours(Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60)))
-    setMinutes(Math.floor((totalSeconds % (60 * 60)) / 60))
-    setSeconds(totalSeconds % 60)
-
-  }, 1000);
 
 
   if (isProcessing) {
@@ -115,7 +109,7 @@ const Page = () => {
   } else {
     return (
       <div className='pt-[10vh] '>
-        <video autoPlay loop muted playsInline aria-hidden="true" pointerEvents="none" className="absolute z-[0] sm:h-full h-[90rem] w-full top-0 left-0 object-cover" style={{ mixBlendMode: "color-dodge", opacity: '0.4' }} onCanPlay={() => setisLoading(false)}>
+        <video autoPlay loop muted playsInline aria-hidden="true" pointerEvents="none" preload="metadata" poster='./first_frame' className="absolute z-[0] sm:h-full h-[90rem] w-full top-0 left-0 object-cover" style={{ mixBlendMode: "color-dodge", opacity: '0.4' }} onCanPlay={() => setisLoading(false)}>
           <source src="./circuit.mp4" />
         </video>
         <div className='z-[1] relative'>
@@ -173,8 +167,21 @@ const Page = () => {
                   <div className='flex gap-3 items-center mt-2'><p className='text-blue-800'><Mail className='h-5' /></p><p>harshmallick052009@gmail.com</p></div>
                   <div className='flex gap-3 items-center mt-2'><p className='text-blue-800'><MapPinHouse className='h-5' /></p><p>M Block, No:44, Saket Rd, Block N, Saket, New Delhi, Delhi 110017, India</p></div>
                 </div>
-                <div className="bottom border-1 border-gray-600 rounded-md h-[18.27rem] py-6 px-9 bg-gray-600/25 mt-7">
-                  <iframe width="100%" height="100%" loading="lazy" className="inset-0 rounded-md" frameBorder="0" title="map" marginHeight="0" marginWidth="0" scrolling="no" src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=Amity%20Saket+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed"></iframe>
+
+                <div id='maps_div' className="bottom border-1 border-gray-600 rounded-md h-[18.27rem] py-6 px-9 bg-gray-600/25 mt-7">
+                  <Image src={dummy_map_img} className='cursor-pointer' alt='' id='dummy_map_image' onClick={(e) => {
+                    const maps_div = document.getElementById("maps_div");
+                    const maps_element = document.createElement('iframe')
+                    const dummy_map_image = document.getElementById("dummy_map_image")
+                    maps_element.width = "100%"
+                    maps_element.height = "100%"
+                    maps_element.scrolling = "no"
+                    maps_element.src = "https://maps.google.com/maps?width=100%&height=600&hl=en&q=Amity%20Saket+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed"
+                    maps_element.className = "inset-0 rounded-md"
+
+                    maps_div.appendChild(maps_element)
+                    dummy_map_image.hidden = true
+                  }} />
                 </div>
               </div>
             </div>
