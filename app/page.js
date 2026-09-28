@@ -109,7 +109,7 @@ const Page = () => {
   } else {
     return (
       <div className='pt-[10vh] '>
-        <video autoPlay loop muted playsInline aria-hidden="true" pointerEvents="none" preload="metadata" poster='./first_frame' className="absolute z-[0] sm:h-full h-[90rem] w-full top-0 left-0 object-cover" style={{ mixBlendMode: "color-dodge", opacity: '0.4' }} onCanPlay={() => setisLoading(false)}>
+        <video autoPlay loop muted playsInline aria-hidden="true" pointerEvents="none" preload="metadata" poster='./first_frame.jpg' className="absolute z-[0] sm:h-full h-[90rem] w-full top-0 left-0 object-cover" style={{ mixBlendMode: "color-dodge", opacity: '0.4' }} onCanPlay={() => setisLoading(false)}>
           <source src="./circuit.mp4" />
         </video>
         <div className='z-[1] relative'>
