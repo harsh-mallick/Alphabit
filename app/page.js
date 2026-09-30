@@ -147,7 +147,7 @@ const Page = () => {
               </div>
             </div>
             <p className='font-bold pt-8 text-xl'>Join us on 6 November, 2026 @ 8:30am</p>
-            <button className='to-75% via-20% from-blue-700 via-blue-600 to-purple-800 bg-gradient-to-r text-xl font-bold mt-12 p-3 rounded-3xl w-48 h-15 cursor-pointer hover:from-blue-900 hover:via-blue-800 hover:to-purple-900' onClick={() => { window.open('https://forms.gle/GGxWXHqf8UY5W7bE7', '_blank') }}> <div className='flex align-middle justify-center items-center gap-2'>Register Now <MoveRight /></div></button>
+            <button className='to-75% via-20% from-blue-700 via-blue-600 to-purple-800 bg-gradient-to-r text-xl font-bold mt-12 p-3 rounded-3xl w-48 h-15 cursor-pointer hover:from-blue-900 hover:via-blue-800 hover:to-purple-900' onClick={() => { window.open('https://forms.gle/1ULbC52iGeH2R1QM7', '_blank') }}> <div className='flex align-middle justify-center items-center gap-2'>Register Now <MoveRight /></div></button>
 
           </div>
 

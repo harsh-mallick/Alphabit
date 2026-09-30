@@ -11,7 +11,7 @@ const Page = () => {
             heading: "Creatica",
             img: "https://i.ibb.co/tphxd0VK/for-creatica.webp",
             desc: "Creatica is an electrifying graphic design competition that dares participants to transform abstract prompts into stunning visuals. This is where imagination meets execution — from designing a magazine cover, album artwork, movie poster, or brand identity board.",
-            date: "12 Nov 2025",
+            date: "6 Nov 2026",
             time: "9:00 am",
             place: "Middle Lab",
             participants: "2 Participants per team"
@@ -20,7 +20,7 @@ const Page = () => {
             heading: "Q?Bit",
             img: "https://i.ibb.co/d44ZPgNt/for-qbit.jpg",
             desc: "Q?Bit is a thrilling quiz that tests your knowledge of the ever-evolving world of technology. Whether you're a tech enthusiast, or just curious about the latest innovations, this quiz is designed to engage and educate.",
-            date: "12 Nov 2025",
+            date: "6 Nov 2026",
             time: "9:00 am",
             place: "School Auditorium",
             participants: "2 Participants per team"
@@ -29,16 +29,16 @@ const Page = () => {
             heading: "Innovat-a-Thon",
             img: "https://i.ibb.co/spR1sz6D/for-hackathon.webp",
             desc: "Join us for an exhilarating Hackathon where innovation meets coding prowess! Our challenge: Solve real-world problems by developing cutting-edge web applications. Gather your team, brainstorm ingenious solutions, and race against the clock in this one week coding extravaganza. ",
-            date: "12 Nov 2025",
+            date: "6 Nov 2026",
             time: "9:00 am",
-            place: "B.Ed Hall",
+            place: "Library",
             participants: "2 Participants per team"
         },
         {
             heading: "Debug.Log",
             img: "https://i.ibb.co/dNpSh4w/for-debug.jpg",
             desc: "The ultimate battleground for coding aficionados seeking to showcase their problem-solving abilities. Challenge yourself against the best and battle the clock in this high-intensity coding competition!",
-            date: "12 Nov 2025",
+            date: "6 Nov 2026",
             time: "9:00 am",
             place: "Digital Lab",
             participants: "2 Participants per team"

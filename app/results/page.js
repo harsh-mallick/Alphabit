@@ -1,5 +1,7 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+
 
 const Page = () => {
     // Data remains the same
@@ -27,6 +29,11 @@ const Page = () => {
         { sno: 9, sc: "α15", name_school: "Vasant Valley" },
         { sno: 10, sc: "α16", name_school: "AIS Saket" }
     ]
+
+    const router = useRouter()
+    useEffect(() => {
+        router.push("/")
+    }, [])
 
     return (
         // 1. Dark background and text color for the overall page. 

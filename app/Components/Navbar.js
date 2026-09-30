@@ -39,11 +39,11 @@ const Navbar = () => {
             text: "Events",
             link: "/events"
         },
-        {
-            icon: <UsersRound />,
-            text: "Team",
-            link: "/team"
-        },
+        // {
+        //     icon: <UsersRound />,
+        //     text: "Team",
+        //     link: "/team"
+        // },
         {
             icon: <Clock />,
             text: "Timeline",
@@ -51,7 +51,7 @@ const Navbar = () => {
         },
     ]
     return (
-        <div className='sm:h-[10vh] h-auto sm:flex w-screen px-5 py-3 items-center bg-black sm:bg-gray-900/30 backdrop-blur-xl z-[9] fixed'>
+        <div className='sm:h-[10vh] h-auto sm:flex w-screen px-6 py-3 items-center bg-black sm:bg-gray-900/30 backdrop-blur-xl z-[9] fixed'>
             <div className="left flex sm:justify-center sm:w-1/5 gap-3 ">
                 <div className='flex w-screen justify-between'>
                     <div onClick={() => router.push('/')} className='flex gap-3 cursor-pointer'>
@@ -75,14 +75,14 @@ const Navbar = () => {
                         <div className="icons"><NotebookText /></div>
                         <div className='text'>Prompts</div>
                     </Link>
-                    <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white text-center sm:text-left justify-center sm:justify-start sm:mb-0 mb-2" href='/handbooks'>
+                    {/* <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white text-center sm:text-left justify-center sm:justify-start sm:mb-0 mb-2" href='/handbooks'>
                         <div className="icons"><NotebookText /></div>
                         <div className='text'>Handbook</div>
                     </Link>
                     <Link className="nav flex gap-4 cursor-pointer pr-5 text-base text-slate-300 hover:text-white text-center sm:text-left justify-center sm:justify-start sm:mb-0 mb-2" href='/results'>
                         <div className="icons"><NotebookText /></div>
                         <div className='text'>Results</div>
-                    </Link>
+                    </Link> */}
                     {/* <div className="button">
                         <SignUpButton>
                             <button className='border-2 border-green-500 mr-3 p-2 rounded-xl cursor-pointer hover:bg-green-300 hover:text-black font-bold'>Sign Up</button>
@@ -107,14 +107,14 @@ const Navbar = () => {
                         <div className="icons"><NotebookText /></div>
                         <div className='text'>Prompts</div>
                     </Link>
-                    <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white text-center sm:text-left justify-center sm:justify-start sm:mb-0 mb-2" href='/handbooks'>
+                    {/* <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white text-center sm:text-left justify-center sm:justify-start sm:mb-0 mb-2" href='/handbooks'>
                         <div className="icons"><NotebookText /></div>
                         <div className='text'>Handbook</div>
-                    </Link>
-                    <Link className="nav flex gap-4 cursor-pointer pr-5 text-base text-slate-300 hover:text-white text-center sm:text-left justify-center sm:justify-start sm:mb-0 mb-2" href='/results'>
+                    </Link> */}
+                    {/* <Link className="nav flex gap-4 cursor-pointer pr-5 text-base text-slate-300 hover:text-white text-center sm:text-left justify-center sm:justify-start sm:mb-0 mb-2" href='/results'>
                         <div className="icons"><NotebookText /></div>
                         <div className='text'>Results</div>
-                    </Link>
+                    </Link> */}
                     <UserButton className="cursor-pointer" />
                     <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white text-center sm:text-left justify-center sm:justify-start sm:mb-0 mb-2" href="/">
                         <div className="icon"><SignOutButton className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white mr-5 text-center"><LogOut /></SignOutButton></div>

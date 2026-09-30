@@ -1,8 +1,9 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "../Components/ui/button";
 import { Download } from 'lucide-react';
 import Image from "next/image"
+import { useRouter } from "next/navigation";
 
 const events = [
     {
@@ -24,6 +25,10 @@ const handleDownload = (pdfPath) => {
 };
 
 export default function HandbookRelease() {
+    const router = useRouter()
+    useEffect(() => {
+        router.push("/")
+    }, [])
     return (
         <div className="min-h-screen flex flex-col items-center justify-center px-6 py-12 text-center pt-[10vh]">
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-3 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">
