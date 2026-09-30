@@ -6,7 +6,7 @@ const connect = async () => {
         console.log("No database url provided")
     } else {
         try {
-            mongoose.connect(DB_URI)
+            await mongoose.connect(DB_URI)
             const connection = mongoose.connection
             connection.on("connection", () => {
                 console.log("Connected to database successfully!!")
