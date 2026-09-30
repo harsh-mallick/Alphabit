@@ -1,6 +1,8 @@
 "use client"
 import React, { useEffect } from 'react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
+
+
 const Page = () => {
     // Data remains the same
     const result_array_iat = [
