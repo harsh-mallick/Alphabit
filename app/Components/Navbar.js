@@ -55,7 +55,7 @@ const Navbar = () => {
             <div className="left flex sm:justify-center sm:w-1/5 gap-3 ">
                 <div className='flex w-screen justify-between'>
                     <div onClick={() => router.push('/')} className='flex gap-3 cursor-pointer'>
-                        <div className="logo"><Image src={logo} alt="abc" width={30} height={30} /></div>
+                        <div className="logo"><Image src="/alphabit.png" alt="abc" width={30} height={30} /></div>
                         <div className="title font-bold text-2xl">Alphabit</div>
                     </div>
                     <GiHamburgerMenu className='cursor-pointer block sm:hidden font-bold text-2xl' onClick={show_phone_nav} />

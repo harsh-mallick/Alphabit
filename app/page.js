@@ -114,7 +114,7 @@ const Page = () => {
         </video>
         <div className='z-[1] relative'>
           <div className="home text-center h-[100vh] pt-[5vh]">
-            <div className='w-full flex justify-center'><div className="logo w-28 border-2 border-transparent rounded-full mb-8"><Image src={logo} alt="abc" width={0} height={0} /></div></div>
+            <div className='w-full flex justify-center'><div className="logo w-28 border-2 border-transparent rounded-full mb-8"><Image src="/Images/alphabit3.png" alt="abc" width={150} height={0} /></div></div>
             <h1 className='text-center font-extrabold text-[4rem] tracking-[0.1em] to-75% via-20% from-blue-400 via-blue-500 to-pink-400 bg-gradient-to-r bg-clip-text text-transparent font_audiowide'><Typewriter
               options={{
                 strings: ['ALPHABIT'],
