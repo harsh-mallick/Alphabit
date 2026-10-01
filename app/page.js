@@ -164,7 +164,7 @@ const Page = () => {
               <div className="right sm:w-1/2">
                 <div className="top border-1 border-gray-600 rounded-md sm:h-[14rem] h-auto py-6 px-9 bg-gray-600/25">
                   <p className='font-bold text-xl mb-4' >Contact Information</p>
-                  <div className='flex gap-3 items-center mt-2'><p className='text-blue-800'><Mail className='h-5' /></p><p>harshmallick052009@gmail.com</p></div>
+                  <div className='flex gap-3 items-center mt-2'><p className='text-blue-800'><Mail className='h-5' /></p><p>alphabitamitysaket@gmail.com</p></div>
                   <div className='flex gap-3 items-center mt-2'><p className='text-blue-800'><MapPinHouse className='h-5' /></p><p>M Block, No:44, Saket Rd, Block N, Saket, New Delhi, Delhi 110017, India</p></div>
                 </div>
 

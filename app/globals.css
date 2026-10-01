@@ -103,13 +103,6 @@ body {
   z-index: 10;
 
   /* Layered Shadow for a Crystal/Glass Glow */
-  box-shadow:
-    /* Outer sharp blue glow */
-    0 4px 15px rgba(56, 189, 248, 1),
-    /* Soft purple aura */
-    0 4px 25px rgba(147, 51, 234, 0.5),
-    /* Inner shadow to make the chevron appear to hold the liquid light */
-    inset 0 4px 10px rgba(56, 189, 248, 0.8);
 
   /* Animation: Energetic Pulse and Shift */
   animation: arrow-pulse-shift 1.5s infinite ease-in-out;

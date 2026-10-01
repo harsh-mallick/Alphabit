@@ -22,7 +22,7 @@ const Page = () => {
                         <div class="flex flex-col md:flex-row md:justify-end w-full mb-16 left-event">
                             <div class="md:w-5/12 p-4 md:text-right bg-gradient-to-r from-[#7c3aed]/30 via-gray-900/50 to-transparent hover:from-[#7c3aed]/40 duration-300 tech-glow-purple bg-opacity-10 rounded-lg border border-[#7c3aed]/30 shadow-xl relative z-10 hover:scale-[1.05] transition-all ease-in-out">
                                 <h3 class="text-2xl font-bold mb-2 text-white">1. Registration</h3>
-                                <p class="text-lg mb-2">1th - 20th October</p>
+                                <p class="text-lg mb-2">1st - 20th October</p>
                                 <p class="text-sm opacity-80">Secure your spot for the Tech Fest!</p>
                             </div>
                             <div class="flex justify-center md:block md:w-2/12 relative">
