@@ -244,7 +244,7 @@ const Page = () => {
             ],
             desc: "Hi I’m rabia! I’m an artist and want to pursue clinical psychology in the future. I’m intrigued by the concept of two different realities existing simultaneously. I’m fascinated by the working of the human mind and its impact on behaviour. Besides my interest in psychology I enjoy baking, reading, crocheting, fashion history and I plan to open a suicide prevention non profit organisation and an art gallery in the future.",
             role: "Department Head (Creatica)",
-            profile_pic: "https://i.ibb.co/v69K3D9g/Whats-App-Image-2026-09-30-at-9-52-50-PM.jpg"
+            profile_pic: ""
         },
 
         {
