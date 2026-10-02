@@ -14,6 +14,10 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'res.cloudinary.com',
             },
+            {
+                protocol: 'https',
+                hostname: 'plain-apac-prod-public.komododecks.com',
+            },
         ],
     },
     allowedDevOrigins: ['local-origin.dev', '*.local-origin.dev'],
