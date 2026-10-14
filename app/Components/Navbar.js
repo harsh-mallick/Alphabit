@@ -61,21 +61,20 @@ const Navbar = () => {
                     <GiHamburgerMenu className='cursor-pointer block sm:hidden font-bold text-2xl' onClick={show_phone_nav} />
                 </div>
             </div>
-            <SignedOut>
-                <div className="sm:right sm:flex sm:justify-end sm:w-4/5 text-center sm:gap-9 items-center hidden" id='phone-nav'>
-                    {Array.isArray(nav_items) && nav_items.map((nav_item) => {
-                        return (
-                            <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white text-center sm:text-left justify-center sm:justify-start sm:mb-0 mb-2" key={nav_item.text} href={nav_item.link}>
-                                <div className="icon">{nav_item.icon}</div>
-                                <div className="text">{nav_item.text}</div>
-                            </Link>
-                        )
-                    })}
-                    <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white text-center sm:text-left justify-center sm:justify-start sm:mb-0 mb-2" href='/prompts'>
-                        <div className="icons"><NotebookText /></div>
-                        <div className='text'>Prompts</div>
-                    </Link>
-                    {/* <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white text-center sm:text-left justify-center sm:justify-start sm:mb-0 mb-2" href='/handbooks'>
+            <div className="sm:right sm:flex sm:justify-end sm:w-4/5 text-center sm:gap-9 items-center hidden" id='phone-nav'>
+                {Array.isArray(nav_items) && nav_items.map((nav_item) => {
+                    return (
+                        <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white text-center sm:text-left justify-center sm:justify-start sm:mb-0 mb-2" key={nav_item.text} href={nav_item.link}>
+                            <div className="icon">{nav_item.icon}</div>
+                            <div className="text">{nav_item.text}</div>
+                        </Link>
+                    )
+                })}
+                <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white text-center sm:text-left justify-center sm:justify-start sm:mb-0 mb-2" href='/prompts'>
+                    <div className="icons"><NotebookText /></div>
+                    <div className='text'>Prompts</div>
+                </Link>
+                {/* <Link className="nav flex gap-4 cursor-pointer text-base text-slate-300 hover:text-white text-center sm:text-left justify-center sm:justify-start sm:mb-0 mb-2" href='/handbooks'>
                         <div className="icons"><NotebookText /></div>
                         <div className='text'>Handbook</div>
                     </Link>
@@ -83,7 +82,7 @@ const Navbar = () => {
                         <div className="icons"><NotebookText /></div>
                         <div className='text'>Results</div>
                     </Link> */}
-                    {/* <div className="button">
+                {/* <div className="button">
                         <SignUpButton>
                             <button className='border-2 border-green-500 mr-3 p-2 rounded-xl cursor-pointer hover:bg-green-300 hover:text-black font-bold'>Sign Up</button>
                         </SignUpButton>
@@ -91,8 +90,7 @@ const Navbar = () => {
                             <button className='border-2 border-yellow-500 mr-3 p-2 rounded-xl cursor-pointer hover:bg-yellow-300 hover:text-black font-bold'>Sign In</button>
                         </SignInButton>
                     </div> */}
-                </div>
-            </SignedOut>
+            </div>
             <SignedIn>
                 <div className="sm:right sm:flex sm:justify-end sm:w-4/5 text-center sm:gap-9 items-center hidden" id='phone-nav'>
                     {Array.isArray(nav_items) && nav_items.map((nav_item) => {
